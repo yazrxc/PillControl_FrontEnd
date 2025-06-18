@@ -1,0 +1,60 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>{{ edicion ? 'Editar Especialista' : 'Registrar Especialista' }}</h1>
+  </div>
+  <div style="text-align: center; margin: 5%;">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+      <mat-form-field *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El ID es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El nombre es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Especialidad</mat-label>
+        <input matInput formControlName="especialidad" />
+        <mat-error *ngIf="form.get('especialidad')?.hasError('required')">
+          La especialidad es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono" />
+        <mat-error *ngIf="form.get('telefono')?.hasError('required')">
+          El teléfono es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo" />
+        <mat-error *ngIf="form.get('correo')?.hasError('required')">
+          El correo es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Institución</mat-label>
+        <input matInput formControlName="institucion" />
+        <mat-error *ngIf="form.get('institucion')?.hasError('required')">
+          La institución es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+      <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+    </form>
+  </div>
+</div>
+

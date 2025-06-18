@@ -1,0 +1,39 @@
+<mat-toolbar class="custom-toolbar">
+  <!-- Logo y Nombre a la izquierda -->
+  <div class="left-side">
+    <img src="https://www.shutterstock.com/image-vector/professionally-drawn-illustration-birth-control-600nw-2494043535.jpg" alt="Pill Control" class="logo">
+    <span class="logo-text">Pill Control</span>
+  </div>
+
+  <!-- Menú a la derecha -->
+  <div class="right-side">
+    <button mat-button [matMenuTriggerFor]="menuFarmacias" class="btn-rojo">
+      <mat-icon>store_mall_directory</mat-icon>
+      Farmacias
+    </button>
+    <button mat-button [matMenuTriggerFor]="menuEspecialistas" class="btn-rojo">
+      <mat-icon>record_voice_over</mat-icon>
+      Especialistas
+    </button>
+    <button mat-button [matMenuTriggerFor]="menuMedicamentos" class="btn-rojo">
+      <mat-icon>local_hospital</mat-icon>
+      Medicamentos
+    </button>
+  </div>
+</mat-toolbar>
+
+<!-- Menús -->
+<mat-menu #menuFarmacias="matMenu">
+  <button mat-menu-item routerLink="/farmacias"> <mat-icon>library_books</mat-icon> Listar Farmacias</button>
+  <button mat-menu-item routerLink="/farmacias/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Farmacia</button>
+</mat-menu>
+
+<mat-menu #menuEspecialistas="matMenu">
+  <button mat-menu-item routerLink="/especialistas"><mat-icon>library_books</mat-icon> Listar Especialistas</button>
+  <button mat-menu-item routerLink="/especialistas/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Especialista</button>
+</mat-menu>
+
+<mat-menu #menuMedicamentos="matMenu">
+  <button mat-menu-item routerLink="/medicamentos"><mat-icon>library_books</mat-icon> Listar Medicamentos</button>
+  <button mat-menu-item routerLink="/medicamentos/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Medicamento</button>
+</mat-menu>

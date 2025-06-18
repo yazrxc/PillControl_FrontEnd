@@ -1,0 +1,75 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>{{ edicion ? 'Editar Farmacia' : 'Registrar Farmacia' }}</h1>
+  </div>
+  <div style="text-align: center; margin: 5%;">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+      <mat-form-field *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El ID es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Nombre de la Farmacia</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El nombre de la farmacia es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="direccion" />
+        <mat-error *ngIf="form.get('direccion')?.hasError('required')">
+          La dirección es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono" />
+        <mat-error *ngIf="form.get('telefono')?.hasError('required')">
+          El teléfono es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Horario de Apertura</mat-label>
+        <input matInput formControlName="horaa" type="time" />
+        <mat-error *ngIf="form.get('horaa')?.hasError('required')">
+          El horario de apertura es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Horario de Cierre</mat-label>
+        <input matInput formControlName="horac" type="time" />
+        <mat-error *ngIf="form.get('horac')?.hasError('required')">
+          El horario de cierre es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Longitud</mat-label>
+        <input matInput formControlName="longitud" />
+        <mat-error *ngIf="form.get('longitud')?.hasError('required')">
+          La longitud es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>Latitud</mat-label>
+        <input matInput formControlName="latitud" />
+        <mat-error *ngIf="form.get('latitud')?.hasError('required')">
+          La latitud es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+      <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+    </form>
+  </div>
+</div>
