@@ -5,6 +5,15 @@ import { EspecialistaComponent } from './components/especialista/especialista.co
 import { InsertareditarespecialistaComponent } from './components/especialista/insertareditarespecialista/insertareditarespecialista.component';
 import { MedicamentoComponent } from './components/medicamento/medicamento.component';
 import { InsertareditarmedicamentoComponent } from './components/medicamento/insertareditarmedicamento/insertareditarmedicamento.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { InsertareditarrolusuarioComponent } from './components/rolusuario/insertareditarrolusuario/insertareditarrolusuario.component';
+import { InsertareditarusuarioComponent } from './components/usuario/insertareditarusuario/insertareditarusuario.component';
+import { RolusuarioComponent } from './components/rolusuario/rolusuario.component';
+import { ContactoEmergencia } from './models/contactoemergencia';
+import { ContactoemergenciaComponent } from './components/contactoemergencia/contactoemergencia.component';
+import { InsertareditarcontactoemergenciaComponent } from './components/contactoemergencia/insertareditarcontactoemergencia/insertareditarcontactoemergencia.component';
+import { PerfilsaludComponent } from './components/perfilsalud/perfilsalud.component';
+import { InsertareditarperfilsaludComponent } from './components/perfilsalud/insertareditarperfilsalud/insertareditarperfilsalud.component';
 
 export const routes: Routes = [
     {
@@ -42,5 +51,51 @@ export const routes: Routes = [
                 path:'ediciones/:id',component:InsertareditarmedicamentoComponent
             }
         ]
+    },
+    {
+        path:'usuarios',component:UsuarioComponent,
+        children:[
+            {
+                path:'nuevo',component:InsertareditarusuarioComponent
+            },
+            {
+                path:'ediciones/:id',component:InsertareditarusuarioComponent
+            }
+        ]
+    },
+    {
+
+        path:'roles',component:RolusuarioComponent,
+        children:[
+            {
+                path:'nuevo',component:InsertareditarrolusuarioComponent
+            },
+            {
+                path:'ediciones/:id',component:InsertareditarrolusuarioComponent
+            }
+        ]
+    },
+    {
+        path:'contactosemergencia',component:ContactoemergenciaComponent,
+        children:[
+            {
+                path:'nuevo',component:InsertareditarcontactoemergenciaComponent
+            },
+            {
+                path:'ediciones/:id',component:InsertareditarcontactoemergenciaComponent
+            }
+        ]
+    },
+    {
+        path:'perfilessalud',component:PerfilsaludComponent,
+        children:[
+            {
+                path:'nuevo',component:InsertareditarperfilsaludComponent
+            },
+            {
+                path:'ediciones/:id',component:InsertareditarperfilsaludComponent
+            }
+        ]
     }
+
 ];
