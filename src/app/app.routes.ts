@@ -9,7 +9,6 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { InsertareditarrolusuarioComponent } from './components/rolusuario/insertareditarrolusuario/insertareditarrolusuario.component';
 import { InsertareditarusuarioComponent } from './components/usuario/insertareditarusuario/insertareditarusuario.component';
 import { RolusuarioComponent } from './components/rolusuario/rolusuario.component';
-import { ContactoEmergencia } from './models/contactoemergencia';
 import { ContactoemergenciaComponent } from './components/contactoemergencia/contactoemergencia.component';
 import { InsertareditarcontactoemergenciaComponent } from './components/contactoemergencia/insertareditarcontactoemergencia/insertareditarcontactoemergencia.component';
 import { PerfilsaludComponent } from './components/perfilsalud/perfilsalud.component';
