@@ -35,6 +35,11 @@
       <mat-icon> contact_phone</mat-icon>
       Contactos de Emergencia
     </button>
+
+    <button mat-button [matMenuTriggerFor]="menuDiagnostico" class="btn-rojo">
+      <mat-icon> list_alt</mat-icon>
+      Diagnósticos
+    </button>
   </div>
 </mat-toolbar>
 
@@ -72,4 +77,9 @@
 <mat-menu #menuContactosEmergencia="matMenu">
   <button mat-menu-item routerLink="/contactosemergencia"><mat-icon>library_books</mat-icon> Listar Contactos</button>
   <button mat-menu-item routerLink="/contactosemergencia/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Contacto</button>
+</mat-menu>
+
+<mat-menu #menuDiagnostico="matMenu">
+  <button mat-menu-item routerLink="/diagnosticos"><mat-icon>library_books</mat-icon> Listar Diagnósticos</button>
+  
 </mat-menu>

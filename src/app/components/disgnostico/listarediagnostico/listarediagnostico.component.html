@@ -1,0 +1,53 @@
+<div class="container">
+  <div style="text-align: center;margin: 5%;">
+    <h1>Lista de Aplicaciones</h1>
+  </div>
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="c1"> <!-- columnas -->
+        <th mat-header-cell *matHeaderCellDef> ID</th> <!-- nombre de columna a mostrar -->
+        <td mat-cell *matCellDef="let element"> {{element.idDiagnostico}} </td> <!-- nombre de columna de la bd -->
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef> Diagnóstico </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef> Gravedad </th>
+        <td mat-cell *matCellDef="let element"> {{element.gravedad }} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef> Fecha de emisión </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaEmision|date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef> Nombre de paciente </th>
+        <td mat-cell *matCellDef="let element"> 
+          {{ element.user.username}} </td>
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+  </div>
+</div>
