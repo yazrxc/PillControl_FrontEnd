@@ -12,6 +12,4 @@ import { ListarediagnosticoComponent } from "./listarediagnostico/listarediagnos
 
 export class DisgnosticoComponent {
   constructor(public route: ActivatedRoute) { }
-
-
 }

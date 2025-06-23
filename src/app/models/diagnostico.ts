@@ -6,5 +6,5 @@ export class Diagnostico {
   gravedad: string = '';
   fechaEmision: Date = new Date();
   descripcion: string = '';
-  user : Usuario = new Usuario();
+  usuario : Usuario = new Usuario();
 }
