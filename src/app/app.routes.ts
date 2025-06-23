@@ -17,93 +17,117 @@ import { TratamientoComponent } from './components/tratamiento/tratamiento.compo
 import { InsertareditartratamientoComponent } from './components/tratamiento/insertareditartratamiento/insertareditartratamiento.component';
 import { DisgnosticoComponent } from './components/disgnostico/disgnostico.component';
 import { InsertareditardiagnosticoComponent } from './components/disgnostico/insertareditardiagnostico/insertareditardiagnostico.component';
-
+import { RecetaComponent } from './components/receta/receta.component';
+import { InsertareditarrecetaComponent } from './components/receta/insertareditarreceta/insertareditarreceta.component';
 
 export const routes: Routes = [
-    {
-        path:'',redirectTo:'farmacias',pathMatch:'full'
-    },
-    {
-        path:'farmacias',component:FarmaciaComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertareditarfarmaciaComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarfarmaciaComponent
-            }
-        ]
-    },
-    {
-        path:'especialistas',component:EspecialistaComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertareditarespecialistaComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarespecialistaComponent
-            }
-        ]
-    },
-    {
-        path:'medicamentos',component:MedicamentoComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertareditarmedicamentoComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarmedicamentoComponent
-            }
-        ]
-    },
-    {
-        path:'usuarios',component:UsuarioComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertareditarusuarioComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarusuarioComponent
-            }
-        ]
-    },
-    {
-
-        path:'roles',component:RolusuarioComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertareditarrolusuarioComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarrolusuarioComponent
-            }
-        ]
-    },
-    {
-        path:'contactosemergencia',component:ContactoemergenciaComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertareditarcontactoemergenciaComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarcontactoemergenciaComponent
-            }
-        ]
-    },
-    {
-        path:'perfilessalud',component:PerfilsaludComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertareditarperfilsaludComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarperfilsaludComponent
-            }
-        ]
-    },
-    {
-        path: 'diagnosticos', component: DisgnosticoComponent,
-        children: [
+  {
+    path: '',
+    redirectTo: 'farmacias',
+    pathMatch: 'full',
+  },
+  {
+    path: 'farmacias',
+    component: FarmaciaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarfarmaciaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarfarmaciaComponent,
+      },
+    ],
+  },
+  {
+    path: 'especialistas',
+    component: EspecialistaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarespecialistaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarespecialistaComponent,
+      },
+    ],
+  },
+  {
+    path: 'medicamentos',
+    component: MedicamentoComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarmedicamentoComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarmedicamentoComponent,
+      },
+    ],
+  },
+  {
+    path: 'usuarios',
+    component: UsuarioComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarusuarioComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarusuarioComponent,
+      },
+    ],
+  },
+  {
+    path: 'roles',
+    component: RolusuarioComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarrolusuarioComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarrolusuarioComponent,
+      },
+    ],
+  },
+  {
+    path: 'contactosemergencia',
+    component: ContactoemergenciaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarcontactoemergenciaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarcontactoemergenciaComponent,
+      },
+    ],
+  },
+  {
+    path: 'perfilessalud',
+    component: PerfilsaludComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarperfilsaludComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarperfilsaludComponent,
+      },
+    ],
+  },
+  {
+    path: 'diagnosticos',
+    component: DisgnosticoComponent,
+    children: [
       {
         path: 'nuevo',
         component: InsertareditardiagnosticoComponent,
@@ -112,18 +136,34 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertareditardiagnosticoComponent,
       },
-        ]
-    },
-    {
-        path:'tratamientos',component:TratamientoComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertareditartratamientoComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditartratamientoComponent
-            }
-        ]
-    },
-
+    ],
+  },
+  {
+    path: 'tratamientos',
+    component: TratamientoComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditartratamientoComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditartratamientoComponent,
+      },
+    ],
+  },
+  {
+    path: 'recetas',
+    component: RecetaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarrecetaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarrecetaComponent,
+      },
+    ],
+  },
 ];

@@ -25,7 +25,6 @@ export class RecetaService {
   }
 
   getList() {
-    // para actualizar automático (looks like)
     return this.listaCambio.asObservable();
   }
 
