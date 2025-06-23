@@ -1,4 +1,3 @@
-
 import { Diagnostico } from './diagnostico';
 import { Usuario } from './usuario';
 
