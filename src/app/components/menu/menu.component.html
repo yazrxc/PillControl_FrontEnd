@@ -1,8 +1,7 @@
 <mat-toolbar class="custom-toolbar">
   <!-- Logo y Nombre a la izquierda -->
   <div class="left-side">
-    <img src="https://www.shutterstock.com/image-vector/professionally-drawn-illustration-birth-control-600nw-2494043535.jpg" alt="Pill Control" class="logo">
-    <span class="logo-text">Pill Control</span>
+    <span class="logo-text">PILLCONTROL</span>
   </div>
 
   <!-- Menú a la derecha -->
@@ -34,6 +33,10 @@
     <button mat-button [matMenuTriggerFor]="menuContactosEmergencia" class="btn-rojo">
       <mat-icon> contact_phone</mat-icon>
       Contactos de Emergencia
+    </button>
+    <button mat-button [matMenuTriggerFor]="menuTratamiento" class="btn-rojo">
+      <mat-icon> contact_phone</mat-icon>
+      Tratamientos
     </button>
   </div>
 </mat-toolbar>
@@ -72,4 +75,8 @@
 <mat-menu #menuContactosEmergencia="matMenu">
   <button mat-menu-item routerLink="/contactosemergencia"><mat-icon>library_books</mat-icon> Listar Contactos</button>
   <button mat-menu-item routerLink="/contactosemergencia/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Contacto</button>
+</mat-menu>
+<mat-menu #menuTratamiento="matMenu">
+  <button mat-menu-item routerLink="/tratamientos"><mat-icon>library_books</mat-icon> Listar Tratamientos</button>
+  <button mat-menu-item routerLink="/tratamientos/nuevo"><mat-icon>add_to_photos</mat-icon>Registrar tratamiento</button>
 </mat-menu>

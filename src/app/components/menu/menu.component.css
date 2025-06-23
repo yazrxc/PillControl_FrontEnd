@@ -1,5 +1,5 @@
 .custom-toolbar {
-  background-color: rgb(14, 134, 155);
+  background-color: #000000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@
 }
 
 .left-side .logo-text {
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 18px;
   font-weight: bold;
 }
@@ -29,7 +29,7 @@
 }
 
 .btn-rojo {
-  background-color: rgb(14, 134, 155);
+  background-color: rgb(255, 255, 255);
   border-radius: 4px;
   margin: 4px;
   border: none;
@@ -41,5 +41,5 @@
 
 .custom-toolbar button,
 .custom-toolbar mat-icon {
-  color: white;
+  color: rgb(0, 0, 0);
 }
