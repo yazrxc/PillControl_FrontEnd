@@ -18,6 +18,7 @@ import { InsertareditartratamientoComponent } from './components/tratamiento/ins
 import { DisgnosticoComponent } from './components/disgnostico/disgnostico.component';
 import { InsertareditardiagnosticoComponent } from './components/disgnostico/insertareditardiagnostico/insertareditardiagnostico.component';
 
+
 export const routes: Routes = [
     {
         path:'',redirectTo:'farmacias',pathMatch:'full'
@@ -112,7 +113,7 @@ export const routes: Routes = [
         component: InsertareditardiagnosticoComponent,
       },
         ]
-    }
+    },
     {
         path:'tratamientos',component:TratamientoComponent,
         children:[
