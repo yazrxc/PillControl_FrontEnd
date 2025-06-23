@@ -1,0 +1,88 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%" *ngIf="!edicion">
+    <h1>Registro</h1>
+  </div>
+
+  <div style="text-align: center; margin: 5%" *ngIf="edicion">
+    <h1>Actualizar</h1>
+  </div>
+
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field *ngIf="edicion">
+        <mat-label>ID</mat-label>
+
+        <input matInput formControlName="id" />
+        <mat-error *ngIf="form.get('id')?.hasError('required')">
+          El código es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Diagnóstico</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="form.get('name')?.hasError('required')">
+          El nombre es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <div>
+        <mat-form-field>
+          <label>Gravedad: </label>
+          <mat-select formControlName="grav">
+            @for (food of nivel; track food) {
+            <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.get('grav')?.hasError('required')">
+            El tipo es obligatorio!!
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Elige una fecha: </mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaEm" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('fechaEm')?.hasError('required')">
+          La fecha es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Descripción</mat-label>
+        <input matInput formControlName="descrip" />
+        <mat-error *ngIf="form.get('descrip')?.hasError('required')">
+          La descripción es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <mat-label>Selecciona un usuario: </mat-label>
+        <mat-select formControlName="u">
+          @for (us of listaUsuarios; track us) {
+          <mat-option [value]="us.idUsuario">{{ us.nombre }}</mat-option> }
+        </mat-select>
+        <mat-error *ngIf="form.get('u')?.hasError('required')">
+          El usuario es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <button matButton="elevated">Registrar</button>
+    </form>
+  </div>
+</div>

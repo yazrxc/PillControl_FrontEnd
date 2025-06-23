@@ -46,6 +46,10 @@
       <mat-icon> list_alt</mat-icon>
       Diagnósticos
     </button>
+        <button mat-button [matMenuTriggerFor]="menuReceta" class="btn-rojo">
+      <mat-icon> list_alt</mat-icon>
+      Recetas
+    </button>
   </div>
 </mat-toolbar>
 
@@ -118,5 +122,9 @@
 </mat-menu>
 <mat-menu #menuDiagnostico="matMenu">
   <button mat-menu-item routerLink="/diagnosticos"><mat-icon>library_books</mat-icon> Listar Diagnósticos</button>
-  
+  <button mat-menu-item routerLink="/diagnosticos/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Diagnósticos</button>
+</mat-menu>
+<mat-menu #menuReceta="matMenu">
+  <button mat-menu-item routerLink="/recetas"><mat-icon>library_books</mat-icon> Listar Recetas</button>
+  <button mat-menu-item routerLink="/recetas/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Recetas</button>
 </mat-menu>
