@@ -13,6 +13,8 @@ import { ContactoemergenciaComponent } from './components/contactoemergencia/con
 import { InsertareditarcontactoemergenciaComponent } from './components/contactoemergencia/insertareditarcontactoemergencia/insertareditarcontactoemergencia.component';
 import { PerfilsaludComponent } from './components/perfilsalud/perfilsalud.component';
 import { InsertareditarperfilsaludComponent } from './components/perfilsalud/insertareditarperfilsalud/insertareditarperfilsalud.component';
+import { TratamientoComponent } from './components/tratamiento/tratamiento.component';
+import { InsertareditartratamientoComponent } from './components/tratamiento/insertareditartratamiento/insertareditartratamiento.component';
 import { DisgnosticoComponent } from './components/disgnostico/disgnostico.component';
 
 export const routes: Routes = [
@@ -97,10 +99,21 @@ export const routes: Routes = [
             }
         ]
     },
+
+{
+        path:'tratamientos',component:TratamientoComponent,
+        children:[
+            {
+                path:'nuevo',component:InsertareditartratamientoComponent
+            },
+            {
+                path:'ediciones/:id',component:InsertareditartratamientoComponent
+            }
+        ]
+    },
     {
         path: 'diagnosticos', component: DisgnosticoComponent,
         
         
     }
-
 ];

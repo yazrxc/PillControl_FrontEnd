@@ -1,0 +1,60 @@
+<div>
+  <div style="text-align: center; margin: 5%">
+    <h1>Registrar tratamiento</h1>
+  </div>
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+      <mat-form-field *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El ID es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Indicaciones</mat-label>
+        <input matInput formControlName="indicaciones" />
+        <mat-error *ngIf="form.get('indicaciones')?.hasError('required')">
+          Las indicaciones son obligatorias.
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Objetivos</mat-label>
+        <input matInput formControlName="objetivo" />
+        <mat-error *ngIf="form.get('objetivo')?.hasError('required')">
+          La especialidad es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <input matInput formControlName="estado" />
+        <mat-error *ngIf="form.get('estado')?.hasError('required')">
+          La especialidad es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="usuario" />
+        <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+          El usuario es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Diagnostico</mat-label>
+        <input matInput formControlName="diagnostico" />
+        <mat-error *ngIf="form.get('diagnostico')?.hasError('required')">
+          El diagnostico es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <button matButton="elevated">
+        {{ edicion ? "Actualizar" : "Registrar" }}
+      </button>
+    </form>
+  </div>
+</div>
