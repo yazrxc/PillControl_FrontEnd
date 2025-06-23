@@ -1,1 +1,115 @@
-<p>insertareditarusuario works!</p>
+<div class="container">
+  <div style="text-align: center; margin: 3%">
+    <h1>Registro</h1>
+  </div>
+  <div style="text-align: center; margin: 3%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <!-- cuando se agrega un obj form al html, debe ponerse en el ts -->
+      <mat-form-field *ngIf="edicion">
+        <!-- esta cajita se activará sólo si edición está en true -->
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El código es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El nombre es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="user" />
+        <mat-error *ngIf="form.get('user')?.hasError('required')">
+          El usuario es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="contraseña" />
+        <mat-error *ngIf="form.get('contraseña')?.hasError('required')">
+          La contraseña es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <div>
+        <label>Estado</label>
+        <mat-radio-group formControlName="estado">
+          <mat-radio-button [value]="true">Activo</mat-radio-button>
+          <mat-radio-button [value]="false">Inactivo</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <br />
+      <mat-form-field>
+        <mat-label>Edad</mat-label>
+        <input matInput formControlName="edad" />
+        <mat-error *ngIf="form.get('edad')?.hasError('required')">
+          La edad es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo" />
+        <mat-error *ngIf="form.get('correo')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Genero</mat-label>
+        <input matInput formControlName="genero" />
+        <mat-error *ngIf="form.get('genero')?.hasError('required')">
+          El genero es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Telefono</mat-label>
+        <input matInput formControlName="telefono" />
+        <mat-error *ngIf="form.get('telefono')?.hasError('required')">
+          El telefono es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Direccion</mat-label>
+        <input matInput formControlName="direccion" />
+        <mat-error *ngIf="form.get('direccion')?.hasError('required')">
+          La direccion es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('fecha')?.hasError('required')">
+          La fecha es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Especialista</mat-label>
+        <mat-select formControlName="especialista">
+          @for (esp of listaEspecialistas; track esp) {
+          <mat-option [value]="esp.idEspecialista">{{ esp.nombreEspecialista }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <button matButton="elevated">Registrar</button>
+    </form>
+  </div>
+</div>
