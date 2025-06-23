@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { DisgnosticoService } from '../../../services/disgnostico.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Diagnostico } from '../../../models/diagnostico';
@@ -16,7 +22,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-insertareditardiagnostico',
-    providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter()],
   imports: [
     ReactiveFormsModule, // para el FormGroup
     MatInputModule,
@@ -25,7 +31,7 @@ import { UsuarioService } from '../../../services/usuario.service';
     MatRadioModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './insertareditardiagnostico.component.html',
   styleUrl: './insertareditardiagnostico.component.css',
@@ -39,29 +45,29 @@ export class InsertareditardiagnosticoComponent implements OnInit {
 
   id: number = 0;
 
-  estado: boolean = true
+  estado: boolean = true;
 
-    listaUsuarios: Usuario[] = [];
+  listaUsuarios: Usuario[] = [];
 
   nivel: { value: string; viewValue: string }[] = [
-    { value: "Alta", viewValue: "Alta" },  
-    { value: "Moderada", viewValue: "Moderada" },
-    { value: "Leve", viewValue: "Leve" }
-  ]
+    { value: 'Alta', viewValue: 'Alta' },
+    { value: 'Moderada', viewValue: 'Moderada' },
+    { value: 'Leve', viewValue: 'Leve' },
+  ];
 
   constructor(
     private dS: DisgnosticoService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private uS : UsuarioService
+    private uS: UsuarioService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
-      this.id = data['id']; 
-      this.edicion = data['id'] != null; 
-      
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+
       this.init();
     });
 
@@ -74,15 +80,16 @@ export class InsertareditardiagnosticoComponent implements OnInit {
       u: ['', Validators.required],
     });
 
-        this.uS.list().subscribe(data => { // 
+    this.uS.list().subscribe((data) => {
+      //
       this.listaUsuarios = data;
-    })
+    });
   }
 
   aceptar() {
     if (this.form.valid) {
-      this.diagnostico.idDiagnostico = this.form.value.codigo;
-      this.diagnostico.nombre = this.form.value.name; 
+      this.diagnostico.idDiagnostico = this.form.value.id;
+      this.diagnostico.nombre = this.form.value.name;
       this.diagnostico.gravedad = this.form.value.grav;
       this.diagnostico.fechaEmision = this.form.value.fechaEm;
       this.diagnostico.descripcion = this.form.value.descrip;
@@ -95,8 +102,7 @@ export class InsertareditardiagnosticoComponent implements OnInit {
           });
         });
         this.router.navigate(['diagnosticos']);
-      }
-      else {
+      } else {
         this.dS.insertar(this.diagnostico).subscribe(() => {
           this.dS.listar().subscribe((data) => {
             this.dS.setList(data);
@@ -107,18 +113,18 @@ export class InsertareditardiagnosticoComponent implements OnInit {
     }
   }
 
-  init() { 
-    if (this.edicion) { 
-      this.dS.listarID(this.id).subscribe(data => {
+  init() {
+    if (this.edicion) {
+      this.dS.listarID(this.id).subscribe((data) => {
         this.form = new FormGroup({
           id: new FormControl(data.idDiagnostico),
           name: new FormControl(data.nombre),
           grav: new FormControl(data.gravedad),
           fechaEm: new FormControl(data.fechaEmision),
           descrip: new FormControl(data.descripcion),
-          u: new FormControl(data.usuario)
-        })
-      })
+          u: new FormControl(data.usuario),
+        });
+      });
     }
   }
 }

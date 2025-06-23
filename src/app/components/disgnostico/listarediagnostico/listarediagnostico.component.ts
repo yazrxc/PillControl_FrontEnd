@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Diagnostico } from '../../../models/diagnostico';
-import { Usuario } from '../../../models/usuario';
 import { DisgnosticoService } from '../../../services/disgnostico.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
