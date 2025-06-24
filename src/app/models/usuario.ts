@@ -14,4 +14,5 @@ export class Usuario {
     direccionUsuario: string = '';
     fechaRegistroUsuario: Date = new Date();
     especialista: Especialista = new Especialista();
+    roles?: RolUsuario;
 }
