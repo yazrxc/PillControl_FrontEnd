@@ -1,1 +1,76 @@
-<p>insertareditarcontactoemergencia works!</p>
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>{{ edicion ? 'Editar Contacto de Emergencia' : 'Registrar Contacto de Emergencia' }}</h1>
+  </div>
+  <div style="text-align: center; margin: 5%;">
+    <form [formGroup]="form" (submit)="aceptar()">
+      
+      <!-- Código (ID del Contacto de Emergencia) -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Código de Contacto de Emergencia</mat-label>
+        <input matInput placeholder="Ingrese el código" formControlName="codigo">
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El código es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Nombre -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName="nombre">
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El nombre es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Parentesco -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Parentesco</mat-label>
+        <input matInput placeholder="Parentesco" formControlName="parentesco">
+        <mat-error *ngIf="form.get('parentesco')?.hasError('required')">
+          El parentesco es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Teléfono -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Teléfono</mat-label>
+        <input matInput type="tel" placeholder="Teléfono" formControlName="telefono">
+        <mat-error *ngIf="form.get('telefono')?.hasError('required')">
+          El teléfono es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Correo -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput type="email" placeholder="Correo" formControlName="correo">
+        <mat-error *ngIf="form.get('correo')?.hasError('required')">
+          El correo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Usuario (select) -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Seleccione Usuario</mat-label>
+        <mat-select formControlName="user">
+          <mat-option *ngFor="let usuario of listaUsuario" [value]="usuario.nombre">
+            {{ usuario.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('user')?.hasError('required')">
+          El usuario es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Botón de acción -->
+      <button matButton="elevated">{{ edicion ? 'Actualizar Contacto' : 'Registrar Contacto' }}</button>
+    </form>
+  </div>
+</div>

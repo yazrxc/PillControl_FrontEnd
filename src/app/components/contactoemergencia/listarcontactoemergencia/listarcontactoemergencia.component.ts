@@ -6,6 +6,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { ContactoEmergencia } from '../../../models/contactoemergencia';
 import { ContactoemergenciaService } from '../../../services/contactoemergencia.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listarcontactoemergencia',
@@ -14,7 +15,8 @@ import { ContactoemergenciaService } from '../../../services/contactoemergencia.
     CommonModule,
     MatButtonModule,
     RouterLink,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
   ],
   templateUrl: './listarcontactoemergencia.component.html',
   styleUrl: './listarcontactoemergencia.component.css'

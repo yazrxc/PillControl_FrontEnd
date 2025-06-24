@@ -6,6 +6,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { PerfilSalud } from '../../../models/perfilsalud';
 import { PerfilsaludService } from '../../../services/perfilsalud.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listarperfilsalud',
@@ -14,7 +15,8 @@ import { PerfilsaludService } from '../../../services/perfilsalud.service';
     CommonModule,
     MatButtonModule,
     RouterLink,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
   ],
   templateUrl: './listarperfilsalud.component.html',
   styleUrl: './listarperfilsalud.component.css'
