@@ -1,0 +1,59 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>{{ edicion ? 'Editar Medicamento de farmacia' : 'Registrar Medicamento de farmacia' }}</h1>
+  </div>
+  <div style="text-align: center; margin: 5%;">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+      <mat-form-field *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="id" />
+        <mat-error *ngIf="form.get('id')?.hasError('required')">
+          El ID es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>cantidad</mat-label>
+        <input matInput formControlName="cantidad" />
+        <mat-error *ngIf="form.get('cantidad')?.hasError('required')">
+         La cantidad es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>tipoVenta</mat-label>
+        <input matInput formControlName="tipoVenta" />
+        <mat-error *ngIf="form.get('tipoVenta')?.hasError('required')">
+          tipoVenta es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>laboratorio</mat-label>
+        <input matInput formControlName="laboratorio" />
+        <mat-error *ngIf="form.get('laboratorio')?.hasError('required')">
+          El laboratorio es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>precio</mat-label>
+        <input matInput formControlName="precio" />
+        <mat-error *ngIf="form.get('precio')?.hasError('required')">
+          El precio es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <mat-label>medicamento</mat-label>
+        <input matInput formControlName="medicamento" />
+        <mat-error *ngIf="form.get('medicamento')?.hasError('required')">
+          La medicamento es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+      <button matButton="elevated">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+    </form>
+  </div>
+</div>
