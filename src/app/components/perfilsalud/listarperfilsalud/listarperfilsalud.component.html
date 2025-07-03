@@ -1,6 +1,9 @@
 <div class="container">
     <div style="text-align: center; margin: 5%;">
         <h1>Lista de Perfiles de Salud</h1>
+        <!-- Mostrar la cantidad de registros -->
+        <p *ngIf="!notResults">Total de Perfiles Salud: {{ totalRegistros }}</p>
+        <p *ngIf="notResults">No se encontraron resultados.</p>
     </div>
     <div>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -71,12 +74,11 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-    <!-- Paginador correctamente cerrado -->
-    <mat-paginator [length]="100"  
-                   [pageSize]="10"   
-                   [pageSizeOptions]="[5, 10, 25, 100]" 
-                   [showFirstLastButtons]="true"
-                   aria-label="Select page">
-    </mat-paginator>  <!-- Aquí se cerró correctamente la etiqueta -->
+    <mat-paginator 
+              [length]="totalRegistros"
+              [pageSize]="10"
+              [pageSizeOptions]="[4, 8, 10]"
+              aria-label="Select page">
+    </mat-paginator>
 </div>
 

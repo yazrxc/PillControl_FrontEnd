@@ -19,17 +19,7 @@
         <p><strong>Horario de Cierre:</strong> {{ farmacia.horarioCierreFarmacia }}</p>
 
         <!-- Aquí se mostrará el mapa con la ubicación de la farmacia -->
-        <div class="map-container">
-          <!-- Usamos el método sanitizado para el src del iframe -->
-          <iframe
-            width="100%"
-            height="250"
-            [src]="safeMapUrl(farmacia.mapUrl)"
-            frameborder="0"
-            style="border:0;"
-            allowfullscreen>
-          </iframe>
-        </div>
+        <div #mapContainer [id]="'map-container-' + farmacia.idFarmacia" class="map-container" style="height: 300px; width: 100%;"></div>
       </mat-card-content>
 
       <!-- Acciones de la Card -->
@@ -43,4 +33,11 @@
       </mat-card-actions>
     </mat-card>
   </div>
+  <!-- Paginación -->
+  <mat-paginator 
+    [length]="dataSource.data.length"
+    [pageSize]="2"
+    [pageSizeOptions]="[2, 4, 6]"
+    aria-label="Select page">
+  </mat-paginator>
 </div>

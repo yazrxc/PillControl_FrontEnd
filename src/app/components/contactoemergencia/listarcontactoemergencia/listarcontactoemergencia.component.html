@@ -1,6 +1,21 @@
 <div class="container">
   <div style="text-align: center; margin: 5%;">
     <h1>Lista de Contactos de Emergencia</h1>
+    <!-- Mostrar la cantidad de registros -->
+        <p *ngIf="!notResults">Total de Contactos de Emergencia: {{ totalRegistros }}</p>
+        <p *ngIf="notResults">No se encontraron resultados.</p>
+  </div>
+  <div>
+        <form [formGroup]="form">
+            <mat-form-field>
+                <mat-label>Buscar Por Nombre</mat-label>
+                <input matInput formControlName="nombreBusqueda">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Buscar Por Correo</mat-label>
+                <input matInput formControlName="correoBusqueda">
+              </mat-form-field>
+        </form>
   </div>
   
   <div>
@@ -65,7 +80,12 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+    <mat-paginator 
+              [length]="totalRegistros"
+              [pageSize]="10"
+              [pageSizeOptions]="[4, 8, 10]"
+              aria-label="Select page">
+    </mat-paginator>
   </div>
 </div>
 
