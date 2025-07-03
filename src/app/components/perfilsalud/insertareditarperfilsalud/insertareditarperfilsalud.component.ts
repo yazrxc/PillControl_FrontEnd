@@ -53,7 +53,7 @@ export class InsertareditarperfilsaludComponent implements OnInit{
     })
     
     this.form = this.formBuilder.group({
-      codigo:['',Validators.required],
+      codigo:[''],
       peso:['',Validators.required],
       altura:['',Validators.required],
       grupo:['',Validators.required],
@@ -92,6 +92,7 @@ export class InsertareditarperfilsaludComponent implements OnInit{
             this.pS.setList(data);
           });
         });
+        this.router.navigate(['perfilessalud']);
       }
       this.router.navigate(['perfilessalud']);
     }
@@ -107,7 +108,7 @@ export class InsertareditarperfilsaludComponent implements OnInit{
           grupo:new FormControl(data.gruposanguineo),
           alergia:new FormControl(data.alergias),
           condiciones:new FormControl(data.condiciones),
-          user:new FormControl(data.usuario.nombre)
+          user:new FormControl(data.usuario.idUsuario)
         })
       })
     }
