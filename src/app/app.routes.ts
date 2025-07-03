@@ -22,6 +22,8 @@ import { InsertareditarrecetaComponent } from './components/receta/insertaredita
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistroComponent } from './components/landing-page/registro/registro.component';
 import { LoginComponent } from './components/landing-page/login/login.component';
+import { MedicamentofarmaciaComponent } from './components/medicamentofarmacia/medicamentofarmacia.component';
+import { InsertareditarmedicamentofarmComponent } from './components/medicamentofarmacia/insertareditarmedicamentofarm/insertareditarmedicamentofarm.component';
 
 export const routes: Routes = [
   {
@@ -52,6 +54,20 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: InsertareditarfarmaciaComponent,
+      },
+    ],
+  },
+  {
+    path: 'medicamentosfarmacia',
+    component: MedicamentofarmaciaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarmedicamentofarmComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarmedicamentofarmComponent,
       },
     ],
   },
