@@ -8,6 +8,6 @@ export class Receta {
   observacionesReceta: string = '';
 
   // fks
-  user: Usuario = new Usuario();
+  usuario: Usuario = new Usuario();
   diagnostico: Diagnostico = new Diagnostico();
 }
