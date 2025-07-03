@@ -6,7 +6,7 @@
     <form [formGroup]="form" (submit)="aceptar()">
       
       <!-- Código (ID del Perfil Salud) -->
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>Código de Perfil Salud</mat-label>
         <input matInput placeholder="Ingrese el código" formControlName="codigo">
         <mat-error *ngIf="form.get('codigo')?.hasError('required')">
@@ -66,17 +66,17 @@
       <br>
 
       <!-- Usuario (select) -->
-      <mat-form-field class="example-full-width">
+      <mat-form-field>
         <mat-label>Seleccione Usuario</mat-label>
-        <mat-select formControlName="user">
-          <mat-option *ngFor="let usuario of listaUsuario" [value]="usuario.nombre">
-            {{ usuario.nombre }}
-          </mat-option>
-        </mat-select>
+          <mat-select formControlName="user">
+              @for (food of listaUsuario; track food) {
+            <mat-option [value]="food.idUsuario">{{food.nombre}}</mat-option>
+            }
+          </mat-select>
         <mat-error *ngIf="form.get('user')?.hasError('required')">
           El usuario es obligatorio
         </mat-error>
-      </mat-form-field>
+        </mat-form-field>
       <br>
 
       <!-- Botón de acción -->

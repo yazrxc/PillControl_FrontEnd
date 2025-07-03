@@ -34,6 +34,14 @@ export class ContactoemergenciaService {
   }
   deleteA(id:number){
     return this.http.delete(`${this.url}/${id}`)
-  } 
+  }
+  searchname(nombre:string){
+    const params={nombre:nombre}
+    return this.http.get<ContactoEmergencia[]>(`${this.url}/busquedascontactos`,{params})
+  }
+  searchcorreo(correo:string){
+    const params={correo:correo}
+    return this.http.get<ContactoEmergencia[]>(`${this.url}/busquedascontactoscorreo`,{params})
+  }
   
 }

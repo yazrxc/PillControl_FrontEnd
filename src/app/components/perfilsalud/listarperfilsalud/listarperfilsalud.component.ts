@@ -24,6 +24,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 export class ListarperfilsaludComponent implements OnInit, AfterViewInit{
   dataSource: MatTableDataSource<PerfilSalud> = new MatTableDataSource()
   @ViewChild(MatPaginator) paginator!: MatPaginator;  // Correctamente asignamos el paginator
+  notResults:boolean=false
 
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7','c8','c9']
   totalRegistros: number = 0;

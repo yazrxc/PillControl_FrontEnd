@@ -1,6 +1,9 @@
 <div class="container">
     <div style="text-align: center; margin: 5%;">
         <h1>Lista de Perfiles de Salud</h1>
+        <!-- Mostrar la cantidad de registros -->
+        <p *ngIf="!notResults">Total de Perfiles Salud: {{ totalRegistros }}</p>
+        <p *ngIf="notResults">No se encontraron resultados.</p>
     </div>
     <div>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

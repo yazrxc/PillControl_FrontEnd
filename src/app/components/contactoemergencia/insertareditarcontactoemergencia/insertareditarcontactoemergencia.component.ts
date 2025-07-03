@@ -51,7 +51,7 @@ export class InsertareditarcontactoemergenciaComponent implements OnInit{
     })
     
     this.form = this.formBuilder.group({
-      codigo:['',Validators.required],
+      codigo:[''],
       nombre:['',Validators.required],
       parentesco:['',Validators.required],
       telefono:['',Validators.required],
@@ -88,6 +88,7 @@ export class InsertareditarcontactoemergenciaComponent implements OnInit{
             this.cS.setList(data);
           });
         });
+        this.router.navigate(['contactosemergencia']);
       }
       this.router.navigate(['contactosemergencia']);
     }
@@ -102,7 +103,7 @@ export class InsertareditarcontactoemergenciaComponent implements OnInit{
           parentesco:new FormControl(data.parentesco),
           telefono:new FormControl(data.telefono),
           correo:new FormControl(data.correo),
-          user:new FormControl(data.usuario.nombre)
+          user:new FormControl(data.usuario.idUsuario)
         })
       })
     }
