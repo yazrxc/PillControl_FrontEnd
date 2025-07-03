@@ -1,0 +1,108 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inria Sans', sans-serif;
+}
+
+/* FORM CONTAINER */
+.registro {
+  width: 100%;
+  padding: 2.5rem 2rem;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(169, 248, 138, 0.472),
+    rgba(118, 216, 80, 0.472)
+  );
+}
+
+/* IMAGE */
+.main_figure {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.main_image {
+  width: 80px;
+  max-width: 100px;
+}
+
+/* TITLE */
+.registro_title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* FORM */
+.registro_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+  width: 100%;
+}
+
+/* INPUTS */
+.registro_input {
+  width: 100%;
+  background-color: #fff;
+  outline: none;
+  border: none;
+  padding: 1em;
+  font: inherit;
+  border-radius: 0.6em;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* SUBMIT BUTTON */
+.registro_input--send {
+  background-color: #000;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registro_input--send:hover {
+  background-color: #333;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .registro {
+    padding: 2rem 1.2rem;
+  }
+
+  .main_image {
+    width: 60px;
+  }
+
+  .registro_title {
+    font-size: 1.8rem;
+  }
+}

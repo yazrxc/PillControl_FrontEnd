@@ -1,0 +1,20 @@
+<section class="registro">
+  <figure class="main_figure">
+    <a routerLink="/landing">
+      <img src="assets/pildora.png" alt="Píldora" class="main_image" />
+    </a>
+  </figure>
+
+  <div class="registro_contact">
+    <h2 class="registro_title">¡Regístrate ya!</h2>
+    <form [formGroup]="form" class="registro_form">
+      <input formControlName="nombre" type="text" placeholder="Nombre" class="registro_input" />
+      <input formControlName="apellido" type="text" placeholder="Apellido" class="registro_input" />
+      <input formControlName="correo" type="email" placeholder="Correo electrónico" class="registro_input" />
+      <input formControlName="contrasena" type="password" placeholder="Contraseña" class="registro_input" />
+      <input formControlName="telefono" type="text" placeholder="Número de teléfono" class="registro_input" />
+      <input formControlName="fechaNacimiento" type="date" class="registro_input" />
+      <input type="submit" value="Registrar" class="registro_input registro_input--send" />
+    </form>
+  </div>
+</section>
