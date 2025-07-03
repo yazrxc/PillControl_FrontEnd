@@ -1,0 +1,147 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.main {
+  width: 100%;
+  background: white;
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  animation: mostrar 0.5s ease-in-out;
+}
+
+/* IMAGEN */
+.main_figure {
+  flex: 1 1 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main_image {
+  width: 100%;
+  max-width: 150px;
+}
+
+/* FORMULARIO */
+.main_contact {
+  flex: 1 1 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.main_title {
+  font-size: 2rem;
+  text-align: center;
+  color: #111;
+}
+
+.main_paragraph {
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.main_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.main_form label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #222;
+  align-self: flex-start;
+  margin-left: 10%;
+}
+
+.main_input {
+  width: 80%;
+  padding: 0.9em;
+  font-size: 1rem;
+  border-radius: 0.6em;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.main_input--send {
+  font-weight: 600;
+  background-color: #92b54b;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.main_input--send:hover {
+  background: #8cba2f;
+}
+
+/* REDES */
+.main_social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.main_link {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0.6em 1.5em;
+  transition: background 0.3s ease;
+}
+
+.main_link:hover {
+  background-color: #eee;
+}
+
+.main_icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* ANIMACIÓN */
+@keyframes mostrar {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main_figure,
+  .main_contact {
+    width: 100%;
+  }
+
+  .main_image {
+    max-width: 100px;
+  }
+
+  .main_form label {
+    margin-left: 0;
+    text-align: left;
+  }
+}
