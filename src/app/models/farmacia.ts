@@ -7,4 +7,7 @@ export class Farmacia{
     horarioCierreFarmacia:string="00:00:00"
     longitudFarmacia:string=""
     latitudFarmacia:string=""
+
+    // Propiedad opcional para la URL del mapa
+    mapUrl?: string;
 }
