@@ -1,0 +1,22 @@
+<section class="main">
+  <figure class="main_figure">
+    <a routerLink="/landing">
+      <img src="assets/pildora.png" alt="Píldora" class="main_image" />
+    </a>
+  </figure>
+
+  <div class="main_contact">
+    <h2 class="main_title">Iniciar Sesión</h2>
+    <p class="main_paragraph">Bienvenido a PillControl</p>
+
+    <form [formGroup]="form" class="main_form">
+      <label for="usuario" class="main_label">Usuario</label>
+      <input type="text" id="usuario" class="main_input" formControlName="usuario" />
+
+      <label for="contrasena" class="main_label">Contraseña</label>
+      <input type="password" id="contrasena" class="main_input" formControlName="contrasena" />
+
+      <input type="submit" value="Iniciar Sesión" class="main_input main_input--send" />
+    </form>
+  </div>
+</section>
