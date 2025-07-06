@@ -1,0 +1,58 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>{{ edicion ? 'Editar Notificación' : 'Registrar Notificación' }}</h1>
+  </div>
+
+  <div style="text-align: center; margin: 5%;">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+      <!-- Estado -->
+      <label>Estado de la notificación:</label>
+      <mat-radio-group formControlName="estado" class="example-full-width">
+        <mat-radio-button [value]="true">Activo</mat-radio-button>
+        <mat-radio-button [value]="false">Inactivo</mat-radio-button>
+      </mat-radio-group>
+      <mat-error *ngIf="form.get('estado')?.hasError('required')">
+        El estado es obligatorio
+      </mat-error>
+      <br><br>
+
+      <!-- Mensaje -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Mensaje</mat-label>
+        <textarea matInput rows="3" placeholder="Escriba el mensaje" formControlName="mensaje"></textarea>
+        <mat-error *ngIf="form.get('mensaje')?.hasError('required')">
+          El mensaje es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Selección de Detalle de Receta -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Seleccione Detalle de Receta</mat-label>
+        <mat-select formControlName="detallereceta" required>
+          <mat-option *ngFor="let dr of listaDetalleReceta" [value]="dr.idDetalleReceta">
+            {{ dr.medicamento.nombre }} recetado para {{ dr.receta.usuario.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('detallereceta')?.hasError('required')">
+          Debe seleccionar un detalle de receta
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Botones -->
+      <div class="button-group">
+        <button mat-raised-button color="primary" type="submit">
+          {{ edicion ? 'Actualizar Notificación' : 'Registrar Notificación' }}
+        </button>
+        &nbsp;
+        <button mat-stroked-button color="warn" type="button" (click)="cancelar()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+

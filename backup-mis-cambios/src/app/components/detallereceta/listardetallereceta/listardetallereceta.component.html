@@ -1,0 +1,74 @@
+<div class="container p-4">
+
+  <div class="text-center mb-4">
+    <h2>Listado de Detalles de Receta</h2>
+  </div>
+
+  <!-- Buscador por nombre de usuario -->
+  <mat-form-field appearance="outline" class="w-100 mb-4">
+    <mat-label>Buscar por nombre de usuario</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese nombre del usuario">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
+
+    <!-- ID Detalle -->
+    <ng-container matColumnDef="c1">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.idDetalleReceta }}</td>
+    </ng-container>
+
+    <!-- Medicamento -->
+    <ng-container matColumnDef="c2">
+      <th mat-header-cell *matHeaderCellDef>Medicamento</th>
+      <td mat-cell *matCellDef="let element">{{ element.medicamento.nombre }}</td>
+    </ng-container>
+
+    <!-- Dosis -->
+    <ng-container matColumnDef="c3">
+      <th mat-header-cell *matHeaderCellDef>Dosis</th>
+      <td mat-cell *matCellDef="let element">{{ element.dosisDetalleReceta }}</td>
+    </ng-container>
+
+    <!-- Hora -->
+    <ng-container matColumnDef="c4">
+      <th mat-header-cell *matHeaderCellDef>Hora</th>
+      <td mat-cell *matCellDef="let element">{{ element.horaDetalleReceta || 'No definida' }}</td>
+    </ng-container>
+
+
+    <!-- Intervalo -->
+    <ng-container matColumnDef="c5">
+      <th mat-header-cell *matHeaderCellDef>Intervalo</th>
+      <td mat-cell *matCellDef="let element">{{ element.intervaloDetalleReceta }}</td>
+    </ng-container>
+
+    <!-- Usuario asociado -->
+    <ng-container matColumnDef="c6">
+      <th mat-header-cell *matHeaderCellDef>Usuario</th>
+      <td mat-cell *matCellDef="let element">{{ element.receta.usuario?.nombre }}</td>
+    </ng-container>
+
+    <!-- Eliminar -->
+    <ng-container matColumnDef="c7">
+      <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn" (click)="eliminar(element.idDetalleReceta)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginador -->
+  <mat-paginator [length]="dataSource.filteredData.length"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 15]">
+  </mat-paginator>
+
+</div>
+
