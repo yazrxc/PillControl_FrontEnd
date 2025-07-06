@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-listarediagnostico',
@@ -38,6 +39,7 @@ import { UsuarioService } from '../../../services/usuario.service';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatCardModule,
   ],
   templateUrl: './listarediagnostico.component.html',
   styleUrl: './listarediagnostico.component.css',
@@ -52,6 +54,9 @@ export class ListarediagnosticoComponent implements OnInit, AfterViewInit {
   listaUsuarios: Usuario[] = []; // lista para el <mat-select>
 
   filtroForm: FormGroup;
+
+  // para el paginador
+  diagnosticosPaginados: Diagnostico[] = [];
 
   private _snackBar = inject(MatSnackBar);
   openSnackBar(message: string, action: string) {
@@ -82,12 +87,29 @@ export class ListarediagnosticoComponent implements OnInit, AfterViewInit {
   // sin esto no funciona el paginador
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+
+    // Activa la paginación al cargar y al cambiar de página
+    this.paginator.page.subscribe(() => {
+      this.paginarDiagnosticos();
+    });
+  }
+
+  // para actualizar la paginación al cambiar de página
+  paginarDiagnosticos() {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex + this.paginator.pageSize;
+    this.diagnosticosPaginados = this.dataSource.data.slice(
+      startIndex,
+      endIndex
+    );
   }
 
   cargarDiagnosticos(): void {
     this.dS.listar().subscribe((data) => {
       this.dataSource.data = data;
-      // paginator, length, etc.
+      this.totalRegistros = data.length;
+      this.paginator.firstPage(); // vuelve a la página 1
+      this.paginarDiagnosticos();
     });
   }
 
@@ -96,7 +118,9 @@ export class ListarediagnosticoComponent implements OnInit, AfterViewInit {
       this.dS.listar().subscribe((data) => {
         this.dS.setList(data);
         this.totalRegistros = data.length;
-        this.dataSource.paginator = this.paginator;
+        this.totalRegistros = data.length;
+        this.paginator.firstPage();
+        this.paginarDiagnosticos();
         this.openSnackBar('Diagnóstico eliminado correctamente', 'Cerrar');
       });
     });
@@ -108,10 +132,16 @@ export class ListarediagnosticoComponent implements OnInit, AfterViewInit {
     if (usuario && usuario !== 0) {
       this.dS.buscarPorUsuario(usuario).subscribe((data) => {
         this.dataSource.data = data;
+        this.totalRegistros = data.length;
+        this.paginator.firstPage();
+        this.paginarDiagnosticos();
       });
     } else if (fechaInicio) {
       this.dS.buscarPorFecha(fechaInicio).subscribe((data) => {
         this.dataSource.data = data;
+        this.totalRegistros = data.length;
+        this.paginator.firstPage();
+        this.paginarDiagnosticos();
       });
     } else {
       this.cargarDiagnosticos(); // sin filtros

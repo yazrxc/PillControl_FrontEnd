@@ -1,67 +1,71 @@
-/* Botón con estilo moderno y responsive */
-button[matButton] {
-    background-color: #e0f7fa; /* Azul muy claro */
-    border: 1px solid #00acc1; /* Borde sutil */
-    border-radius: 4px;
-    padding: 6px 12px;
-    width: auto;
-    color: #00796b; /* Azul/verde fuerte */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Contenedor general centrado */
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Icono dentro del botón */
-button[matButton] mat-icon {
-    font-size: 20px;
+/* Título estilizado */
+div > h1 {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 28px;
+  color: #8CBA2F; /* verde oliva */
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-/* Hover y enfoque accesibles */
-button[matButton]:hover {
-    background-color: #b2ebf2;
-    transform: scale(1.05);
-}
-
-button[matButton]:focus {
-    outline: 2px solid #4dd0e1;
-    outline-offset: 2px;
-}
-
-/* Tabla más estilizada */
+/* Tabla */
 table.mat-elevation-z8 {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    background-color: white;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: #F7F7F7;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Encabezado */
+/* Encabezados */
 th.mat-header-cell {
-    background-color: #00acc1;
-    color: white;
-    font-weight: bold;
-    text-align: left;
-    padding: 12px;
+  background-color: #8CBA2F;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px;
+  text-align: center;
 }
 
 /* Celdas */
 td.mat-cell {
-    padding: 10px 12px;
-    border-bottom: 1px solid #ddd;
-    color: #333;
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  color: #333;
 }
 
-/* Filas con efecto hover */
+/* Efecto hover */
 tr.mat-row:hover {
-    background-color: #f1f1f1;
+  background-color: #FFBA5C33; /* suave amarillo melón */
 }
 
-/* Estilo del título */
-.container h1 {
-    font-family: 'Segoe UI', sans-serif;
-    color: #006064;
-    font-size: 28px;
-    margin-bottom: 20px;
+/* Botones */
+button[matButton] {
+  background-color: #8CBA2F;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button[matButton]:hover {
+  background-color: #000000;
+  transform: scale(1.05);
+}
+
+button[matButton] mat-icon {
+  color: white;
 }

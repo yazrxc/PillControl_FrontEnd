@@ -62,7 +62,7 @@
 
       <mat-form-field>
         <mat-label>Descripción</mat-label>
-        <input matInput formControlName="descrip" />
+        <textarea matInput formControlName="descrip"></textarea>
         <mat-error *ngIf="form.get('descrip')?.hasError('required')">
           La descripción es obligatoria!!
         </mat-error>
