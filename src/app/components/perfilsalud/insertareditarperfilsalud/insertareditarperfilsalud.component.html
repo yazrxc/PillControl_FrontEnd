@@ -22,6 +22,12 @@
         <mat-error *ngIf="form.get('peso')?.hasError('required')">
           El peso es obligatorio
         </mat-error>
+        <mat-error *ngIf="form.get('peso')?.hasError('min')">
+          El peso debe ser mayor a 30 kg
+        </mat-error>
+        <mat-error *ngIf="form.get('peso')?.hasError('max')">
+          El peso no puede ser mayor a 300 kg
+        </mat-error>
       </mat-form-field>
       <br>
 
@@ -32,13 +38,23 @@
         <mat-error *ngIf="form.get('altura')?.hasError('required')">
           La altura es obligatoria
         </mat-error>
+        <mat-error *ngIf="form.get('altura')?.hasError('min')">
+          La altura debe ser mayor a 50 cm
+        </mat-error>
+        <mat-error *ngIf="form.get('altura')?.hasError('max')">
+          La altura no puede ser mayor a 300 cm
+        </mat-error>
       </mat-form-field>
       <br>
 
       <!-- Grupo Sanguíneo -->
       <mat-form-field class="example-full-width">
         <mat-label>Grupo Sanguíneo</mat-label>
-        <input matInput placeholder="Ej: O+" formControlName="grupo">
+        <mat-select formControlName="grupo">
+          <mat-option *ngFor="let grupo of gruposSanguineos" [value]="grupo.value">
+            {{ grupo.viewValue }}
+          </mat-option>
+        </mat-select>
         <mat-error *ngIf="form.get('grupo')?.hasError('required')">
           El grupo sanguíneo es obligatorio
         </mat-error>
@@ -52,15 +68,21 @@
         <mat-error *ngIf="form.get('alergia')?.hasError('required')">
           Las alergias son obligatorias
         </mat-error>
+        <mat-error *ngIf="form.get('alergia')?.hasError('maxlength')">
+          Las alergias no pueden tener más de 250 caracteres
+        </mat-error>
       </mat-form-field>
       <br>
 
-      <!-- Condiciones -->
+      <!-- Condiciones Médicas -->
       <mat-form-field class="example-full-width">
         <mat-label>Condiciones Médicas</mat-label>
-        <input matInput placeholder="Condiciones" formControlName="condiciones">
+        <textarea matInput placeholder="Condiciones" formControlName="condiciones"></textarea>
         <mat-error *ngIf="form.get('condiciones')?.hasError('required')">
           Las condiciones médicas son obligatorias
+        </mat-error>
+        <mat-error *ngIf="form.get('condiciones')?.hasError('maxlength')">
+          Las condiciones médicas no pueden tener más de 250 caracteres
         </mat-error>
       </mat-form-field>
       <br>

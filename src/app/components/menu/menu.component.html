@@ -54,6 +54,14 @@
       <mat-icon> list_alt</mat-icon>
       Recetas
     </button>
+    <button mat-button [matMenuTriggerFor]="menuNotificacion" class="btn-rojo">
+      <mat-icon> notifications</mat-icon>
+      Notificaciones
+    </button>
+    <button mat-button [matMenuTriggerFor]="menuReportes" class="btn-rojo">
+      <mat-icon> notifications</mat-icon>
+      Reportes
+    </button>
   </div>
 </mat-toolbar>
 
@@ -151,3 +159,12 @@
     <mat-icon>add_to_photos</mat-icon> Registrar Recetas
   </button>
 </mat-menu>
+<mat-menu #menuNotificacion="matMenu">
+  <button mat-menu-item routerLink="/notificaciones"><mat-icon>library_books</mat-icon> Listar Recetas</button>
+  <button mat-menu-item routerLink="/notificaciones/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Recetas</button>
+</mat-menu>
+<mat-menu #menuReportes="matMenu">
+  <button mat-menu-item routerLink="/reportes"><mat-icon>library_books</mat-icon> Reporte de IMC</button>
+  <button mat-menu-item routerLink="/reportes/reportepacientesenriesgo"><mat-icon>add_to_photos</mat-icon> Reporte de Pacientes en Riesgo</button>
+</mat-menu>
+
