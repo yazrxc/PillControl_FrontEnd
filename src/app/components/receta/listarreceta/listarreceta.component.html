@@ -5,38 +5,37 @@
     <p>Total de Recetas: {{ totalRegistros }}</p>
   </div>
 
-<form [formGroup]="filtroForm">
-  <div class="filtros" style="display: flex; gap: 1rem; margin-bottom: 1rem">
-    <!-- Usuario -->
-    <mat-form-field style="flex: 1" appearance="fill">
-      <mat-label>Filtrar por Usuario</mat-label>
-      <mat-select formControlName="usuarioId">
-        <mat-option value="">Todos</mat-option>
-        <mat-option
-          *ngFor="let usuario of listaUsuarios"
-          [value]="usuario.idUsuario"
-        >
-          {{ usuario.nombre }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <form [formGroup]="filtroForm">
+    <div class="filtros" style="display: flex; gap: 1rem; margin-bottom: 1rem">
+      <!-- Usuario -->
+      <mat-form-field style="flex: 1" appearance="fill">
+        <mat-label>Filtrar por Usuario</mat-label>
+        <mat-select formControlName="usuarioId">
+          <mat-option value="">Todos</mat-option>
+          <mat-option
+            *ngFor="let usuario of listaUsuarios"
+            [value]="usuario.idUsuario"
+          >
+            {{ usuario.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <!-- Fecha de inicio -->
-    <mat-form-field style="flex: 1" appearance="fill">
-      <mat-label>Filtrar por Fecha de Inicio</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker"
-        formControlName="fechaInicio"
-      />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </div>
-</form>
+      <!-- Fecha de inicio -->
+      <mat-form-field style="flex: 1" appearance="fill">
+        <mat-label>Filtrar por Fecha de Inicio</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="fechaInicio"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
   <div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
       <!-- Symbol Column -->
       <ng-container matColumnDef="c1">
         <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
@@ -83,7 +82,7 @@
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
           <button matButton (click)="eliminar(element.idReceta)">
-            <mat-icon>delete_forever</mat-icon>
+            <mat-icon>delete</mat-icon>
           </button>
         </td>
       </ng-container>
