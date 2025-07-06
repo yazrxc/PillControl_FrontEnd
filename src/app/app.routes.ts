@@ -19,6 +19,10 @@ import { DisgnosticoComponent } from './components/disgnostico/disgnostico.compo
 import { InsertareditardiagnosticoComponent } from './components/disgnostico/insertareditardiagnostico/insertareditardiagnostico.component';
 import { RecetaComponent } from './components/receta/receta.component';
 import { InsertareditarrecetaComponent } from './components/receta/insertareditarreceta/insertareditarreceta.component';
+
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { ReportepacientesenriesgoComponent } from './components/reportes/reportepacientesenriesgo/reportepacientesenriesgo.component';
+
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistroComponent } from './components/landing-page/registro/registro.component';
 import { LoginComponent } from './components/landing-page/login/login.component';
@@ -29,6 +33,7 @@ import { DetallerecetaComponent } from './components/detallereceta/detallereceta
 import { InsertareditardetallerecetaComponent } from './components/detallereceta/insertareditardetallereceta/insertareditardetallereceta.component';
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
 import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
+
 
 export const routes: Routes = [
   {
@@ -214,6 +219,7 @@ export const routes: Routes = [
     canActivate: [seguridadGuard],
   },
   {
+
     path: 'detallesrecetas',
     component: DetallerecetaComponent,
     children: [
@@ -238,6 +244,16 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: InsertareditarnotificacionComponent,
+      },
+    ],
+  },
+
+    path: 'reportes',
+    component: ReportesComponent,
+    children: [
+      {
+        path: 'reportepacientesenriesgo',
+        component: ReportepacientesenriesgoComponent,
       },
     ],
   },

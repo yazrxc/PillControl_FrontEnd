@@ -1,71 +1,92 @@
-/* Contenedor general centrado */
-div {
+
+/* Contenedor principal */
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 
-/* Título estilizado */
-div > h1 {
-  font-family: 'Segoe UI', sans-serif;
+/* Título */
+.container h1 {
+  font-family: "Segoe UI", sans-serif;
   font-size: 28px;
-  color: #8CBA2F; /* verde oliva */
+  color: #8cba2f;
   margin-bottom: 20px;
   text-align: center;
 }
 
-/* Tabla */
-table.mat-elevation-z8 {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  border-collapse: collapse;
-  background-color: #F7F7F7;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* Encabezados */
-th.mat-header-cell {
-  background-color: #8CBA2F;
-  color: white;
-  font-weight: bold;
+/* Párrafo de total */
+.container p {
   font-size: 16px;
-  padding: 12px;
-  text-align: center;
-}
-
-/* Celdas */
-td.mat-cell {
-  padding: 12px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-  font-size: 14px;
   color: #333;
+  margin-bottom: 24px;
 }
 
-/* Efecto hover */
-tr.mat-row:hover {
-  background-color: #FFBA5C33; /* suave amarillo melón */
+/* Formulario de filtros */
+form.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* Campos de filtro */
+mat-form-field {
+  width: 250px;
+}
+
+/* Contenedor de tarjetas en 3 columnas fijas */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Exactamente 3 columnas */
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+/* Tarjeta */
+.med-card {
+  background-color: #f7f7f7;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.med-card:hover {
+  background-color: #BDDC7E;
+  transform: translateY(-4px);
+}
+
+/* Título de tarjeta */
+mat-card-title {
+  font-weight: bold;
+  color: #8cba2f;
+}
+
+/* Acciones dentro de la tarjeta */
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 /* Botones */
-button[matButton] {
-  background-color: #8CBA2F;
+button[mat-icon-button] {
+  background-color: #8cba2f;
   color: white;
-  border: none;
   border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 }
 
-button[matButton]:hover {
+button[mat-icon-button]:hover {
   background-color: #000000;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
-button[matButton] mat-icon {
+button[mat-icon-button] mat-icon {
   color: white;
 }
