@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
-import { PerfilTimeDTO } from '../../../models/perfiltimedto';
+import { PerfilTimeDTO } from '../../../models/perfilTimeDTO';
 import { PerfilsaludService } from '../../../services/perfilsalud.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
