@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { PerfilSalud } from '../models/perfilsalud';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { PerfilTimeDTO } from '../models/perfiltimedto';
 
 const base_url = environment.base;
 @Injectable({
@@ -34,5 +35,9 @@ export class PerfilsaludService {
   }
   deleteA(id:number){
     return this.http.delete(`${this.url}/${id}`)
-  } 
+  }
+  getPerfilTime(mes: number, anio: number): Observable<PerfilTimeDTO[]> {
+    const params = { mes: mes, anio: anio };  // Mantenemos los parámetros como números
+    return this.http.get<PerfilTimeDTO[]>(`${this.url}/timesperfiles`, { params });
+  }
 }
