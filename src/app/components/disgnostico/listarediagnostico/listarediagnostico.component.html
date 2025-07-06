@@ -37,78 +37,50 @@
   </form>
 
   <div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!-- Position Column -->
-      <ng-container matColumnDef="c1">
-        <!-- columnas -->
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <!-- nombre de columna a mostrar -->
-        <td mat-cell *matCellDef="let element">{{ element.idDiagnostico }}</td>
-        <!-- nombre de columna de la bd -->
-      </ng-container>
+<div class="card-container">
+  <mat-card
+    class="diagnostico-card"
+*ngFor="let element of diagnosticosPaginados"
+    appearance="outlined"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ element.nombre }}</mat-card-title>
+      <mat-card-subtitle>
+        Gravedad: {{ element.gravedad }}<br />
+        Fecha: {{ element.fechaEmision | date: 'dd/MM/yyyy' }}
+      </mat-card-subtitle>
+    </mat-card-header>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef>Diagnóstico</th>
-        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
-      </ng-container>
+    <mat-card-content>
+      <p><strong>Descripción:</strong> {{ element.descripcion }}</p>
+      <p><strong>Usuario:</strong> {{ element.usuario?.nombre || 'Sin usuario' }}</p>
+    </mat-card-content>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="c3">
-        <th mat-header-cell *matHeaderCellDef>Gravedad</th>
-        <td mat-cell *matCellDef="let element">{{ element.gravedad }}</td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="c4">
-        <th mat-header-cell *matHeaderCellDef>Fecha de emisión</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.fechaEmision | date : "dd/MM/yyyy" }}
-        </td>
-      </ng-container>
-
-      <!-- Descripción Column -->
-      <ng-container matColumnDef="c5">
-        <th mat-header-cell *matHeaderCellDef>Descripción</th>
-        <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
-      </ng-container>
-
-      <!-- Usuario Column -->
-      <ng-container matColumnDef="c6">
-        <th mat-header-cell *matHeaderCellDef>Usuario</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.usuario?.nombre || "Sin usuario" }}
-        </td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="c7">
-        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
-        <td mat-cell *matCellDef="let element">
-          <button matButton [routerLink]="['ediciones', element.idDiagnostico]">
-            <mat-icon>create</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="c8">
-        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-        <td mat-cell *matCellDef="let element">
-          <button matButton (click)="eliminar(element.idDiagnostico)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+    <mat-card-actions>
+      <button
+        mat-icon-button
+        color="primary"
+        [routerLink]="['ediciones', element.idDiagnostico]"
+        matTooltip="Editar diagnóstico"
+      >
+        <mat-icon>create</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="eliminar(element.idDiagnostico)"
+        matTooltip="Eliminar diagnóstico"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
 
     <mat-paginator
       [length]="totalRegistros"
-      [pageSize]="4"
-      [pageSizeOptions]="[4, 8, 10]"
+      [pageSize]="3"
+      [pageSizeOptions]="[3, 6, 9]"
       aria-label="Select page"
     >
     </mat-paginator>
