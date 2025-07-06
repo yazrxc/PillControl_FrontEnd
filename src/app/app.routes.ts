@@ -29,7 +29,7 @@ import { LoginComponent } from './components/landing-page/login/login.component'
 import { MedicamentofarmaciaComponent } from './components/medicamentofarmacia/medicamentofarmacia.component';
 import { InsertareditarmedicamentofarmComponent } from './components/medicamentofarmacia/insertareditarmedicamentofarm/insertareditarmedicamentofarm.component';
 import { seguridadGuard } from './guard/seguridad.guard';
-
+import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 
 export const routes: Routes = [
   {
@@ -38,16 +38,18 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'landing', component: LandingPageComponent,
-    children:
-    [
+    path: 'landing',
+    component: LandingPageComponent,
+    children: [
       {
-        path:'registro', component: RegistroComponent
+        path: 'registro',
+        component: RegistroComponent,
       },
       {
-        path: 'login',component: LoginComponent
-      }
-    ]
+        path: 'login',
+        component: LoginComponent,
+      },
+    ],
   },
   {
     path: 'farmacias',
@@ -222,7 +224,11 @@ export const routes: Routes = [
         path: 'reportepacientesenriesgo',
         component: ReportepacientesenriesgoComponent,
       },
+      
+      {
+        path: 'recetas-vencidas',
+        component: RecetasvencidasComponent,
+      },
     ],
   },
-  
 ];

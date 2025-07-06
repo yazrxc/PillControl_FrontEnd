@@ -56,4 +56,11 @@ export class RecetaService {
       params: { fecha_inicio_receta: fecha },
     });
   }
+
+  // Query
+  recetasVencidas(id: number) {
+    return this.http.get<Receta[]>(
+      `${this.url}/busquedas-recetas-vencidas-por-usuario/${id}`
+    );
+  }
 }
