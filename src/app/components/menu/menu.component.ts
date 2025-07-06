@@ -9,7 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-menu',
-  imports: [MatToolbarModule,MatButtonModule,MatIconModule,RouterLink, MatSidenavModule, MatListModule, MatExpansionModule, RouterOutlet],
+  imports: [MatToolbarModule,MatButtonModule,MatIconModule,RouterLink, MatSidenavModule, MatListModule, MatExpansionModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 
