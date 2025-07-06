@@ -1,0 +1,37 @@
+<div class="container">
+  <div style="text-align: center; margin: 2%;">
+    <h1>Lista de Notificaciones</h1>
+  </div>
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Buscar por nombre de usuario</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ej. Juan Pérez">
+  </mat-form-field>
+
+  <div class="card-container">
+    <mat-card *ngFor="let notificacion of pagedData" class="mat-elevation-z3">
+      <mat-card-header>
+        <mat-card-title>
+          Notificación #{{ notificacion.idNotificacion }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          Usuario: {{ notificacion.nombreUsuario || 'Desconocido' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p><strong>Mensaje:</strong> {{ notificacion.mensajeNotificacion }}</p>
+        <p><strong>Estado:</strong> {{ notificacion.estadoNotificacion ? 'Cumplida' : 'No Cumplida' }}</p>
+        <p><strong>Medicamento:</strong> {{ notificacion.nombreMedicamento || 'No disponible' }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-icon-button color="warn" (click)="eliminar(notificacion.idNotificacion)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
