@@ -75,7 +75,6 @@ export class ListarrecetaComponent implements OnInit, AfterViewInit {
     });
 
     this.uS.list().subscribe((data) => {
-      //
       this.listaUsuarios = data;
     });
 
