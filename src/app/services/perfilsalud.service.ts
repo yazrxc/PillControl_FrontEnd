@@ -3,7 +3,8 @@ import { environment } from '../../environments/environments';
 import { PerfilSalud } from '../models/perfilsalud';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { PerfilTimeDTO } from '../models/perfiltimedto';
+import { PerfilTimeDTO } from '../models/perfilTimeDTO';
+
 
 const base_url = environment.base;
 @Injectable({
