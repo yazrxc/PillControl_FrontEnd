@@ -88,7 +88,7 @@ export class InsertareditarusuarioComponent implements OnInit {
       this.usuario.telefonoUsuario = this.form.value.telefono;
       this.usuario.direccionUsuario = this.form.value.direccion;
       this.usuario.fechaRegistroUsuario = this.form.value.fecha;
-      this.usuario.especialista = this.form.value.especialista;
+      this.usuario.especialista.idEspecialista = this.form.value.especialista;
       if (this.edicion) {
         this.uS.update(this.usuario).subscribe(() => {
           this.uS.list().subscribe((data) => {
