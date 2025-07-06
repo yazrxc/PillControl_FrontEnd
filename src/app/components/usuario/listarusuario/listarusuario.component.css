@@ -1,9 +1,56 @@
+/* Contenedor general centrado */
 div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* Botón con estilo moderno y responsive */
+
+/* Título estilizado */
+div > h1 {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 28px;
+  color: #8CBA2F; /* verde oliva */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Tabla */
+table.mat-elevation-z8 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  border-collapse: collapse;
+  background-color: #F7F7F7;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Encabezados */
+th.mat-header-cell {
+  background-color: #8CBA2F;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px;
+  text-align: center;
+}
+
+/* Celdas */
+td.mat-cell {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Efecto hover */
+tr.mat-row:hover {
+  background-color: #FFBA5C33; /* suave amarillo melón */
+}
+
+/* Botones */
 button[matButton] {
   background-color: #8CBA2F;
   color: white;
@@ -21,48 +68,4 @@ button[matButton]:hover {
 
 button[matButton] mat-icon {
   color: white;
-}
-
-/* Tabla más estilizada */
-table.mat-elevation-z8 {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  border-collapse: collapse;
-  background-color: #F7F7F7;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* Encabezado */
-th.mat-header-cell {
-  background-color: #e6ecd9;
-  color: white;
-  font-weight: bold;
-  text-align: left;
-  padding: 12px;
-}
-
-/* Celdas */
-td.mat-cell {
-  padding: 12px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-  font-size: 14px;
-  color: #333;
-}
-
-/* Filas con efecto hover */
-tr.mat-row:hover {
-  background-color: #FFBA5C33;
-}
-
-/* Estilo del título */
-.container h1 {
-  font-family: "Segoe UI", sans-serif;
-  font-size: 28px;
-  color: #8cba2f;
-  margin-bottom: 20px;
-  text-align: center;
 }
