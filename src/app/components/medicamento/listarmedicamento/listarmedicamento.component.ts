@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-listarmedicamento',
@@ -31,25 +32,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
   ],
   templateUrl: './listarmedicamento.component.html',
   styleUrl: './listarmedicamento.component.css',
 })
 export class ListarmedicamentoComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Medicamento> = new MatTableDataSource();
-
-  displayedColumns: string[] = [
-    'c1',
-    'c2',
-    'c3',
-    'c4',
-    'c5',
-    'c6',
-    'c7',
-    'c8',
-    'c9',
-    'c10',
-  ];
 
   totalRegistros: number = 0;
 
@@ -86,10 +75,10 @@ export class ListarmedicamentoComponent implements OnInit, AfterViewInit {
       this.totalRegistros = data.length;
       this.dataSource.paginator = this.paginator;
     });
-    
-    this.mS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-    });
+
+    //    this.mS.getList().subscribe((data) => {
+    //      this.dataSource = new MatTableDataSource(data);
+    //    });
 
     // Suscripción a los cambios en nombreBusqueda
     this.form.get('nombreBusqueda')?.valueChanges.subscribe((value) => {
@@ -106,6 +95,10 @@ export class ListarmedicamentoComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+
+    this.paginator.page.subscribe(() => {
+      this.paginatedData(); // esto fuerza la actualización de datos paginados
+    });
   }
 
   // Aplicamos ambos filtros
@@ -149,5 +142,15 @@ export class ListarmedicamentoComponent implements OnInit, AfterViewInit {
         this.openSnackBar('Medicamento eliminado correctamente', 'Cerrar');
       });
     });
+  }
+
+  // para el paginator
+  paginatedData(): Medicamento[] {
+    if (!this.dataSource || !this.paginator) {
+      return [];
+    }
+    const start = this.paginator.pageIndex * this.paginator.pageSize;
+    const end = start + this.paginator.pageSize;
+    return this.dataSource.filteredData.slice(start, end);
   }
 }
