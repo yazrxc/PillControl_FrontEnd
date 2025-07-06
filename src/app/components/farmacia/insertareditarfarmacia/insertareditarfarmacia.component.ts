@@ -50,7 +50,6 @@ export class InsertareditarfarmaciaComponent implements OnInit{
       this.init()
     })
     this.form = this.formBuilder.group({
-      codigo:[''],
       nombre: ['', Validators.required],
       direccion: ['', Validators.required],
       telefono: ['', Validators.required],

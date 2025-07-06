@@ -95,7 +95,7 @@ export class InsertareditarrecetaComponent implements OnInit {
       this.receta.fechaInicioReceta = this.form.value.fechainic;
       this.receta.fechaFinReceta = this.form.value.observ;
       this.receta.observacionesReceta = this.form.value.observ;
-      this.receta.user = this.form.value.usua;
+      this.receta.usuario = this.form.value.usua;
       this.receta.diagnostico = this.form.value.diagn;
 
       if (this.edicion) {
@@ -124,7 +124,7 @@ export class InsertareditarrecetaComponent implements OnInit {
           fechainic: new FormControl(data.fechaInicioReceta),
           fechafin: new FormControl(data.fechaFinReceta),
           observ: new FormControl(data.observacionesReceta),
-          usua: new FormControl(data.user),
+          usua: new FormControl(data.usuario),
           diagn: new FormControl(data.diagnostico),
         });
       });

@@ -19,6 +19,8 @@ import { DisgnosticoComponent } from './components/disgnostico/disgnostico.compo
 import { InsertareditardiagnosticoComponent } from './components/disgnostico/insertareditardiagnostico/insertareditardiagnostico.component';
 import { RecetaComponent } from './components/receta/receta.component';
 import { InsertareditarrecetaComponent } from './components/receta/insertareditarreceta/insertareditarreceta.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { ReportepacientesenriesgoComponent } from './components/reportes/reportepacientesenriesgo/reportepacientesenriesgo.component';
 
 export const routes: Routes = [
   {
@@ -166,4 +168,15 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'reportes',
+    component: ReportesComponent,
+    children: [
+      {
+        path: 'reportepacientesenriesgo',
+        component: ReportepacientesenriesgoComponent,
+      },
+    ],
+  },
+  
 ];

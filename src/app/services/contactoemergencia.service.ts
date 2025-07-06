@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { ContactoEmergencia } from '../models/contactoemergencia';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { AlertaSinContactoGravedadAltaDTO } from '../models/alertaSinContactoGravedadAltaDTO';
 
 const base_url = environment.base;
 @Injectable({
@@ -42,6 +43,9 @@ export class ContactoemergenciaService {
   searchcorreo(correo:string){
     const params={correo:correo}
     return this.http.get<ContactoEmergencia[]>(`${this.url}/busquedascontactoscorreo`,{params})
+  }
+  getSinContacto(): Observable<AlertaSinContactoGravedadAltaDTO[]> {
+      return this.http.get<AlertaSinContactoGravedadAltaDTO[]>(`${this.url}/riesgoaltasincontactos`);
   }
   
 }
