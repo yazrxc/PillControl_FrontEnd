@@ -24,6 +24,7 @@ import { RegistroComponent } from './components/landing-page/registro/registro.c
 import { LoginComponent } from './components/landing-page/login/login.component';
 import { MedicamentofarmaciaComponent } from './components/medicamentofarmacia/medicamentofarmacia.component';
 import { InsertareditarmedicamentofarmComponent } from './components/medicamentofarmacia/insertareditarmedicamentofarm/insertareditarmedicamentofarm.component';
+import { seguridadGuard } from './guard/seguridad.guard';
 
 export const routes: Routes = [
   {
@@ -56,6 +57,7 @@ export const routes: Routes = [
         component: InsertareditarfarmaciaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'medicamentosfarmacia',
@@ -70,6 +72,7 @@ export const routes: Routes = [
         component: InsertareditarmedicamentofarmComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'especialistas',
@@ -84,6 +87,7 @@ export const routes: Routes = [
         component: InsertareditarespecialistaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'medicamentos',
@@ -98,6 +102,7 @@ export const routes: Routes = [
         component: InsertareditarmedicamentoComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'usuarios',
@@ -112,6 +117,7 @@ export const routes: Routes = [
         component: InsertareditarusuarioComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'roles',
@@ -126,6 +132,7 @@ export const routes: Routes = [
         component: InsertareditarrolusuarioComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'contactosemergencia',
@@ -140,6 +147,7 @@ export const routes: Routes = [
         component: InsertareditarcontactoemergenciaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'perfilessalud',
@@ -154,6 +162,7 @@ export const routes: Routes = [
         component: InsertareditarperfilsaludComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'diagnosticos',
@@ -168,6 +177,7 @@ export const routes: Routes = [
         component: InsertareditardiagnosticoComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'tratamientos',
@@ -182,6 +192,7 @@ export const routes: Routes = [
         component: InsertareditartratamientoComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'recetas',
@@ -196,5 +207,6 @@ export const routes: Routes = [
         component: InsertareditarrecetaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
 ];

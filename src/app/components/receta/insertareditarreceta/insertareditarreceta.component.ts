@@ -95,8 +95,8 @@ export class InsertareditarrecetaComponent implements OnInit {
       this.receta.fechaInicioReceta = this.form.value.fechainic;
       this.receta.fechaFinReceta = this.form.value.fechafin;
       this.receta.observacionesReceta = this.form.value.observ;
-      this.receta.usuario = this.form.value.usua;
-      this.receta.diagnostico = this.form.value.diagn;
+      this.receta.usuario.idUsuario = this.form.value.usua;
+      this.receta.diagnostico.idDiagnostico = this.form.value.diagn;
 
       if (this.edicion) {
         this.rS.modificar(this.receta).subscribe(() => {
