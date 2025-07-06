@@ -44,4 +44,16 @@ export class DisgnosticoService {
   eliminar(id: number) {
     return this.h.delete(`${this.url}/${id}`);
   }
+
+  buscarPorUsuario(idUsuario: number) {
+    return this.h.get<Diagnostico[]>(`${this.url}/busquedas`, {
+      params: { idUsuario },
+    });
+  }
+
+  buscarPorFecha(fecha: string) {
+    return this.h.get<Diagnostico[]>(`${this.url}/fechas`, {
+      params: { fecha },
+    });
+  }
 }
