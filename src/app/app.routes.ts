@@ -25,6 +25,10 @@ import { LoginComponent } from './components/landing-page/login/login.component'
 import { MedicamentofarmaciaComponent } from './components/medicamentofarmacia/medicamentofarmacia.component';
 import { InsertareditarmedicamentofarmComponent } from './components/medicamentofarmacia/insertareditarmedicamentofarm/insertareditarmedicamentofarm.component';
 import { seguridadGuard } from './guard/seguridad.guard';
+import { DetallerecetaComponent } from './components/detallereceta/detallereceta.component';
+import { InsertareditardetallerecetaComponent } from './components/detallereceta/insertareditardetallereceta/insertareditardetallereceta.component';
+import { NotificacionComponent } from './components/notificacion/notificacion.component';
+import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
 
 export const routes: Routes = [
   {
@@ -208,5 +212,33 @@ export const routes: Routes = [
       },
     ],
     canActivate: [seguridadGuard],
+  },
+  {
+    path: 'detallesrecetas',
+    component: DetallerecetaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditardetallerecetaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditardetallerecetaComponent,
+      },
+    ],
+  },
+  {
+    path: 'notificaciones',
+    component: NotificacionComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarnotificacionComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarnotificacionComponent,
+      },
+    ],
   },
 ];

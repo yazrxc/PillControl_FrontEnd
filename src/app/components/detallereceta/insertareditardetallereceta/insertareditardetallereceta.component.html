@@ -1,0 +1,84 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>{{ edicion ? 'Editar Detalle de Receta' : 'Registrar Detalle de Receta' }}</h1>
+  </div>
+
+  <div style="text-align: center; margin: 5%;">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+      <!-- Dosis -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Dosis</mat-label>
+        <input matInput type="number" placeholder="Ingrese la dosis" formControlName="dosis">
+        <mat-error *ngIf="form.get('dosis')?.hasError('required')">
+          La dosis es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Hora -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Hora</mat-label>
+        <input matInput type="time" placeholder="Ingrese la hora" formControlName="hora">
+        <mat-error *ngIf="form.get('hora')?.hasError('required')">
+          La hora es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Intervalo -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Intervalo (en horas)</mat-label>
+        <input matInput type="number" placeholder="Intervalo entre dosis" formControlName="intervalo">
+        <mat-error *ngIf="form.get('intervalo')?.hasError('required')">
+          El intervalo es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Frecuencia -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Frecuencia (por día)</mat-label>
+        <input matInput type="number" placeholder="Frecuencia diaria" formControlName="frecuencia">
+        <mat-error *ngIf="form.get('frecuencia')?.hasError('required')">
+          La frecuencia es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Medicamento (select) -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Seleccione Medicamento</mat-label>
+        <mat-select formControlName="medicamento">
+          <mat-option *ngFor="let m of listaMedicamento" [value]="m.id_medicamento">
+            {{ m.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('medicamento')?.hasError('required')">
+          El medicamento es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Receta (select) -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Seleccione Receta</mat-label>
+        <mat-select formControlName="receta">
+          <mat-option *ngFor="let r of listaReceta" [value]="r.idReceta">
+            {{ r.idReceta }} - {{ r.usuario.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('receta')?.hasError('required')">
+          La receta es obligatoria
+        </mat-error>
+      </mat-form-field>
+      <br>
+
+      <!-- Botón de acción -->
+      <button mat-raised-button color="primary">
+        {{ edicion ? 'Actualizar Detalle' : 'Registrar Detalle' }}
+      </button>
+
+    </form>
+  </div>
+</div>
