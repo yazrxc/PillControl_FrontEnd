@@ -13,10 +13,10 @@
       <label for="usuario" class="main_label">Usuario</label>
       <input type="text" id="usuario" class="main_input" formControlName="usuario" />
 
-      <label for="contrasena" class="main_label">Contraseña</label>
-      <input type="password" id="contrasena" class="main_input" formControlName="contrasena" />
+      <label for="password" class="main_label">Contraseña</label>
+      <input type="password" id="password" class="main_input" formControlName="password" />
 
-      <input type="submit" value="Iniciar Sesión" class="main_input main_input--send" />
+      <input type="submit" value="Iniciar Sesión" (click)="login()" class="main_input main_input--send" />
     </form>
   </div>
 </section>
