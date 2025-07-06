@@ -87,6 +87,8 @@ export class ListarediagnosticoComponent implements OnInit, AfterViewInit {
   cargarDiagnosticos(): void {
     this.dS.listar().subscribe((data) => {
       this.dataSource.data = data;
+      this.totalRegistros = data.length;
+      this.dataSource.paginator = this.paginator;
       // paginator, length, etc.
     });
   }
