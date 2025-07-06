@@ -252,7 +252,7 @@ export const routes: Routes = [
       },
     ],
   },
-
+  {
     path: 'reportes',
     component: ReportesComponent,
     children: [
