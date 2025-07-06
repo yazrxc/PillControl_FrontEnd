@@ -22,7 +22,7 @@
             <mat-icon>store_mall_directory</mat-icon> Farmacias
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item routerLink="/farmacias" >
+        <a mat-list-item routerLink="/farmacias">
           <mat-icon>library_books</mat-icon> Listar Farmacias
         </a>
         <a mat-list-item routerLink="/farmacias/nuevo">
@@ -182,6 +182,21 @@
         >
         <a mat-list-item routerLink="/recetas/nuevo"
           ><mat-icon>add_to_photos</mat-icon> Registrar</a
+        >
+      </mat-expansion-panel>
+      <br />
+      <!-- Reportes -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title
+            ><mat-icon> notifications</mat-icon> Reportes</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/reportes"
+          ><mat-icon>library_books</mat-icon> Reporte de IMC</a
+        >
+        <a mat-list-item routerLink="/reportes/reportepacientesenriesgo"
+          ><mat-icon>add_to_photos</mat-icon>  Reporte de Pacientes en Riesgo</a
         >
       </mat-expansion-panel>
     </mat-nav-list>
