@@ -30,4 +30,22 @@ export class MedicamentofarmaciaService {
   deleteA(id:number){
     return this.http.delete(`${this.url}/${id}`)
   }
+
+  // Método listId que necesitas para editar
+  listId(id: number) {
+    return this.http.get<MedicamentoFarmacia>(`${this.url}/${id}`);
+  }
+
+  // Queries adicionales que tienes en el backend
+  cantidadPorTipoVenta() {
+    return this.http.get<any[]>(`${this.url}/cantidad-tipo-venta`);
+  }
+
+  medicamentosPorFarmacia() {
+    return this.http.get<any[]>(`${this.url}/medicamento-farmacia`);
+  }
+
+  stockEconomico(minCantidad: number, maxPrecio: number) {
+    return this.http.get<MedicamentoFarmacia[]>(`${this.url}/economico?minCantidad=${minCantidad}&maxPrecio=${maxPrecio}`);
+  }
 }

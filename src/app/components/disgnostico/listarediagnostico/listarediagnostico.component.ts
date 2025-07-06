@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-listarediagnostico',
@@ -38,6 +39,7 @@ import { UsuarioService } from '../../../services/usuario.service';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatCardModule
   ],
   templateUrl: './listarediagnostico.component.html',
   styleUrl: './listarediagnostico.component.css',
@@ -87,6 +89,8 @@ export class ListarediagnosticoComponent implements OnInit, AfterViewInit {
   cargarDiagnosticos(): void {
     this.dS.listar().subscribe((data) => {
       this.dataSource.data = data;
+      this.totalRegistros = data.length;
+      this.dataSource.paginator = this.paginator;
       // paginator, length, etc.
     });
   }

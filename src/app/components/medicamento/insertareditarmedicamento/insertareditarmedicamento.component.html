@@ -25,7 +25,7 @@
       <!-- Descripción Column -->
       <mat-form-field>
         <mat-label>Descripción</mat-label>
-        <input matInput formControlName="descripcion" />
+         <textarea matInput formControlName="descripcion"></textarea>
         <mat-error *ngIf="form.get('descripcion')?.hasError('required')">
           La descripción es obligatoria!!
         </mat-error>
@@ -41,9 +41,12 @@
       </mat-form-field>
       <br/>
       <!-- Unidad de Medida Column -->
-      <mat-form-field>
-        <mat-label>Unidad de Medida</mat-label>
-        <input matInput formControlName="unidad" type="number" />
+       <mat-form-field>
+        <mat-label>Selecciona la unidad de medida: </mat-label>
+        <mat-select formControlName="unidad">
+          @for (us of unidades; track us) {
+          <mat-option [value]="us.value">{{ us.viewValue }}</mat-option> }
+        </mat-select>
         <mat-error *ngIf="form.get('unidad')?.hasError('required')">
           La unidad de medida es obligatoria!!
         </mat-error>
@@ -51,21 +54,29 @@
       <br/>
       <!-- Tipo de Medicamento Column -->
       <mat-form-field>
-        <mat-label>Tipo de Medicamento</mat-label>
-        <input matInput formControlName="tipo" />
+        <mat-label>Selecciona un tipo de medicamento: </mat-label>
+        <mat-select formControlName="tipo">
+          @for (us of tipos; track us) {
+          <mat-option [value]="us.value">{{ us.viewValue }}</mat-option> }
+        </mat-select>
         <mat-error *ngIf="form.get('tipo')?.hasError('required')">
           El tipo de medicamento es obligatorio!!
         </mat-error>
       </mat-form-field>
+
       <br/>
       <!-- Presentación Column -->
-      <mat-form-field>
-        <mat-label>Presentación</mat-label>
-        <input matInput formControlName="presentacion" />
+             <mat-form-field>
+        <mat-label>Selecciona una presentación de medicamento: </mat-label>
+        <mat-select formControlName="presentacion">
+          @for (pres of presentaciones; track pres) {
+          <mat-option [value]="pres.value">{{ pres.viewValue }}</mat-option> }
+        </mat-select>
         <mat-error *ngIf="form.get('presentacion')?.hasError('required')">
           La presentación es obligatoria!!
         </mat-error>
       </mat-form-field>
+      
       <br/>
       <!-- Contenido Column -->
       <mat-form-field>

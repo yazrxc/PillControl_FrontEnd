@@ -19,33 +19,31 @@
       </mat-form-field>
       <br />
 
-      <mat-form-field>
-        <mat-label>Fecha de inicio: </mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fechainic" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-form-field appearance="fill">
+        <mat-label>Rango de fechas</mat-label>
+        <mat-date-range-input [rangePicker]="picker" [formGroup]="form">
+          <input
+            matStartDate
+            placeholder="Fecha de inicio"
+            formControlName="fechainic"
+          />
+          <input
+            matEndDate
+            placeholder="Fecha de fin"
+            formControlName="fechafin"
+          />
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
         ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-date-range-picker #picker></mat-date-range-picker>
         <mat-error *ngIf="form.get('fechainic')?.hasError('required')">
-          La fecha es obligatoria!!
+          La fecha de inicio es obligatoria.
         </mat-error>
-      </mat-form-field>
-
-      <br />
-
-      <mat-form-field>
-        <mat-label>Fecha de vencimiento: </mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="fechafin" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="form.get('fechafin')?.hasError('required')">
-          La fecha es obligatoria!!
+          La fecha de fin es obligatoria.
         </mat-error>
       </mat-form-field>
 
@@ -53,7 +51,7 @@
 
       <mat-form-field>
         <mat-label>Observaciones</mat-label>
-        <input matInput formControlName="observ" />
+        <textarea matInput formControlName="observ"></textarea>
         <mat-error *ngIf="form.get('observ')?.hasError('required')">
           Las observaciones son obligatorias!!
         </mat-error>

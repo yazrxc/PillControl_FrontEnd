@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MedicamentoFarmacia } from '../../../models/medicamentofarmcia';
 import { MedicamentofarmaciaService } from '../../../services/medicamentofarmacia.service';
 
@@ -13,23 +14,27 @@ import { MedicamentofarmaciaService } from '../../../services/medicamentofarmaci
     CommonModule,
     MatButtonModule,
     MatIconModule,
+    MatPaginatorModule,
   ],
   templateUrl: './listarmedicamentofarm.component.html',
   styleUrl: './listarmedicamentofarm.component.css',
 })
-export class ListarmedicamentofarmComponent implements OnInit{
-  dataSource: MatTableDataSource<MedicamentoFarmacia> = new MatTableDataSource()
+export class ListarmedicamentofarmComponent implements OnInit, AfterViewInit {
+  dataSource: MatTableDataSource<MedicamentoFarmacia> = new MatTableDataSource();
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7','c8']
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7','c8'];
 
   constructor(private mS: MedicamentofarmaciaService) { }
 
   ngOnInit(): void {
     this.mS.list().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data)
+      console.log('Datos recibidos del backend:', data);
+      this.dataSource.data = data;
     })
     this.mS.getList().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data)
+      console.log('Datos del observable:', data);
+      this.dataSource.data = data;
     })
     
   }
@@ -39,6 +44,10 @@ export class ListarmedicamentofarmComponent implements OnInit{
         this.mS.setList(data)
       })
     })
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
 }

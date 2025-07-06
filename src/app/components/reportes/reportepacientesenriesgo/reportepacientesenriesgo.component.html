@@ -1,0 +1,86 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>Lista de Pacientes en Riesgo</h1>
+    <p>Este reporte muestra una lista de pacientes con diagnósticos graves o condiciones médicas previas, que podrían estar en una situación crítica en caso de emergencia. 
+        Lo más relevante de esta lista es que estos pacientes no tienen un contacto de emergencia confiable, lo que pone en riesgo la eficacia de su atención médica. 
+        El objetivo de esta información es ayudar al personal médico o administrativo a priorizar la búsqueda de alternativas para mejorar la comunicación y garantizar la intervención médica adecuada en situaciones de urgencia.</p>
+    <!-- Mostrar la cantidad de registros -->
+    <p *ngIf="!notResults">Total de Pacientes: {{ totalRegistros }}</p>
+    <p *ngIf="notResults">No se encontraron resultados.</p>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+      <!-- ID Usuario Column -->
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef> ID Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.id_Usuario}} </td>
+      </ng-container>
+
+      <!-- Nombre Usuario Column -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre_Usuario}} </td>
+      </ng-container>
+
+      <!-- Edad Usuario Column -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef> Edad </th>
+        <td mat-cell *matCellDef="let element"> {{element.edad_Usuario}} </td>
+      </ng-container>
+
+      <!-- Diagnóstico Column -->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef> Diagnóstico </th>
+        <td mat-cell *matCellDef="let element"> {{element.diagnostico}} </td>
+      </ng-container>
+
+      <!-- Gravedad Column -->
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef> Gravedad </th>
+        <td mat-cell *matCellDef="let element"> {{element.gravedad}} </td>
+      </ng-container>
+
+      <!-- Alergias Column -->
+      <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef> Alergias </th>
+        <td mat-cell *matCellDef="let element"> {{element.alergias}} </td>
+      </ng-container>
+
+      <!-- Condiciones Column -->
+      <ng-container matColumnDef="c7">
+        <th mat-header-cell *matHeaderCellDef> Condiciones </th>
+        <td mat-cell *matCellDef="let element"> {{element.condiciones}} </td>
+      </ng-container>
+
+      <!-- Nombre Contacto Column -->
+      <ng-container matColumnDef="c8">
+        <th mat-header-cell *matHeaderCellDef> Nombre Contacto </th>
+        <td mat-cell *matCellDef="let element"> 
+          {{ element.nombre_Contacto || 'No tiene Contacto' }} 
+        </td>
+      </ng-container>
+
+      <!-- Teléfono Contacto Column -->
+      <ng-container matColumnDef="c9">
+        <th mat-header-cell *matHeaderCellDef> Teléfono Contacto </th>
+        <td mat-cell *matCellDef="let element"> 
+          {{ element.telefono_Contacto || 'No tiene Teléfono del Contacto' }} 
+        </td>
+      </ng-container>
+
+      <!-- Definir filas de la tabla -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Paginación -->
+    <mat-paginator 
+      [length]="totalRegistros"
+      [pageSize]="10"
+      [pageSizeOptions]="[4, 8, 10]"
+      aria-label="Seleccione página">
+    </mat-paginator>
+  </div>
+</div>

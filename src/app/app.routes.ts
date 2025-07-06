@@ -19,12 +19,20 @@ import { DisgnosticoComponent } from './components/disgnostico/disgnostico.compo
 import { InsertareditardiagnosticoComponent } from './components/disgnostico/insertareditardiagnostico/insertareditardiagnostico.component';
 import { RecetaComponent } from './components/receta/receta.component';
 import { InsertareditarrecetaComponent } from './components/receta/insertareditarreceta/insertareditarreceta.component';
+
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { ReportepacientesenriesgoComponent } from './components/reportes/reportepacientesenriesgo/reportepacientesenriesgo.component';
+import { ReportefarmaciasabrentempranoComponent } from './components/reportes/reportefarmaciasabrentemprano/reportefarmaciasabrentemprano.component';
+import { ReporteubicacionesfarmaciaasComponent } from './components/reportes/reporteubicacionesfarmacias/reporteubicacionesfarmacias.component';
+import { ReportedonantespontencialesComponent } from './components/reportes/reportedonantespontenciales/reportedonantespontenciales.component';
+
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistroComponent } from './components/landing-page/registro/registro.component';
 import { LoginComponent } from './components/landing-page/login/login.component';
 import { MedicamentofarmaciaComponent } from './components/medicamentofarmacia/medicamentofarmacia.component';
 import { InsertareditarmedicamentofarmComponent } from './components/medicamentofarmacia/insertareditarmedicamentofarm/insertareditarmedicamentofarm.component';
 import { seguridadGuard } from './guard/seguridad.guard';
+
 
 export const routes: Routes = [
   {
@@ -209,4 +217,23 @@ export const routes: Routes = [
     ],
     canActivate: [seguridadGuard],
   },
+  {
+    path: 'reportes',
+    component: ReportesComponent,
+    children: [
+      {
+        path: 'reportepacientesenriesgo',
+        component: ReportepacientesenriesgoComponent,
+      },
+      {
+        path: 'reportefarmaciasabrentemprano',
+        component: ReportefarmaciasabrentempranoComponent,
+      },
+      {
+        path: 'reporteubicacionesfarmacias',
+        component: ReporteubicacionesfarmaciaasComponent,
+      },
+    ],
+  },
+  
 ];

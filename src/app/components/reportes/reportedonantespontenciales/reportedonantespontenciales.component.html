@@ -1,0 +1,97 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>Lista de Perfiles de Tiempo</h1>
+    <p>Este reporte presenta una lista de posibles donantes con sus datos relacionados a la salud y el grupo sanguíneo. 
+        Se identifican usuarios con un Índice de Masa Corporal (IMC) dentro de rangos saludables o cercanos, junto con su tipo de sangre y número de teléfono para facilitar el contacto en caso de ser donantes potenciales. 
+        A continuación, puedes ver los perfiles de los usuarios registrados y su estado físico según su IMC.</p>
+    <!-- Mostrar la cantidad de registros -->
+    <p *ngIf="!notResults">Total de Registros: {{ totalRegistros }}</p>
+    <p *ngIf="notResults">No se encontraron resultados.</p>
+  </div>
+  
+    <div>
+    <!-- Formulario para los parámetros de búsqueda (mes y año) -->
+        <form (ngSubmit)="buscarPorMesYAnio()" #searchForm="ngForm">
+        
+        <!-- Campo Mes -->
+        <mat-form-field>
+        <mat-label>Mes</mat-label>
+        <input matInput [(ngModel)]="mes" name="mes" required type="number" min="1" max="12" #mesField="ngModel">
+        <mat-error *ngIf="mesField.invalid && mesField.touched">
+            El mes es obligatorio y debe estar entre 1 y 12.
+        </mat-error>
+        </mat-form-field>
+        
+        <!-- Campo Año -->
+        <mat-form-field>
+        <mat-label>Año</mat-label>
+        <input matInput [(ngModel)]="anio" name="anio" required type="number" 
+                pattern="^\d{4}$" #anioField="ngModel">
+        <mat-error *ngIf="anioField.invalid && anioField.touched">
+            El año es obligatorio y debe ser un número de 4 dígitos.
+        </mat-error>
+        </mat-form-field>
+        
+        <!-- Botón de Búsqueda -->
+        <button mat-raised-button type="submit" [disabled]="searchForm.invalid">Buscar</button>
+    </form>
+    </div>
+
+  
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <!-- Peso Column -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef> Peso </th>
+        <td mat-cell *matCellDef="let element"> {{element.peso}} </td>
+      </ng-container>
+
+      <!-- Otros Campos -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef> Altura </th>
+        <td mat-cell *matCellDef="let element"> {{element.altura}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef> Grupo Sanguíneo </th>
+        <td mat-cell *matCellDef="let element"> {{element.grupoSanguineo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+        <td mat-cell *matCellDef="let element"> {{element.telefonoUsuario}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c6">
+        <th mat-header-cell *matHeaderCellDef> IMC </th>
+        <td mat-cell *matCellDef="let element"> {{element.imc}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c7">
+        <th mat-header-cell *matHeaderCellDef> Categoría IMC </th>
+        <td mat-cell *matCellDef="let element"> {{element.categoriaImc}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c8">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaRegistro | date}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]="totalRegistros"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[4, 8, 10]"
+                   aria-label="Select page">
+    </mat-paginator>
+  </div>
+</div>
