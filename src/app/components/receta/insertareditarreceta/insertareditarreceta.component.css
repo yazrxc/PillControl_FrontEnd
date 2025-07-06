@@ -1,8 +1,15 @@
+h1 {
+    margin-bottom: 24px;
+  color: #8CBA2F;
+  font-weight: 600;
+  font-family: 'Segoe UI', sans-serif;
+}
+
 mat-form-field {
     width: 60%;   
     }  
     button[matButton="elevated"] {
-    background-color: black;  
+    background-color:#000000;  
     color: white;   
     border: none;   
     padding: 0.5rem 1.25rem;   
@@ -12,5 +19,5 @@ mat-form-field {
     width: 60%;   
    }
    button[matButton="elevated"]:hover {   
-    background-color: black;
-} 
+    background-color: #8CBA2F;
+}
