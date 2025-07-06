@@ -1,6 +1,6 @@
 <div class="container">
   <div style="text-align: center; margin: 3%">
-    <h1>Registro</h1>
+    <h1>{{ edicion ? "Editar Usuario" : "Registrar Usuario" }}</h1>
   </div>
   <div style="text-align: center; margin: 3%">
     <form [formGroup]="form" (submit)="aceptar()">
@@ -11,14 +11,6 @@
         <input matInput formControlName="codigo" />
         <mat-error *ngIf="form.get('codigo')?.hasError('required')">
           El código es obligatorio
-        </mat-error>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre" />
-        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
-          El nombre es obligatorio
         </mat-error>
       </mat-form-field>
       <br />
@@ -35,6 +27,14 @@
         <input matInput formControlName="contraseña" />
         <mat-error *ngIf="form.get('contraseña')?.hasError('required')">
           La contraseña es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El nombre es obligatorio
         </mat-error>
       </mat-form-field>
       <br />
@@ -104,7 +104,9 @@
         <mat-label>Especialista</mat-label>
         <mat-select formControlName="especialista">
           @for (esp of listaEspecialistas; track esp) {
-          <mat-option [value]="esp.idEspecialista">{{ esp.nombreEspecialista }}</mat-option>
+          <mat-option [value]="esp.idEspecialista">{{
+            esp.nombreEspecialista
+          }}</mat-option>
           }
         </mat-select>
       </mat-form-field>

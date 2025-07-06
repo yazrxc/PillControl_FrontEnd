@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { RouterLink } from '@angular/router';
 import { MedicamentoFarmacia } from '../../../models/medicamentofarmcia';
 import { MedicamentofarmaciaService } from '../../../services/medicamentofarmacia.service';
 
@@ -13,7 +12,6 @@ import { MedicamentofarmaciaService } from '../../../services/medicamentofarmaci
     MatTableModule,
     CommonModule,
     MatButtonModule,
-    RouterLink,
     MatIconModule,
   ],
   templateUrl: './listarmedicamentofarm.component.html',
@@ -22,7 +20,7 @@ import { MedicamentofarmaciaService } from '../../../services/medicamentofarmaci
 export class ListarmedicamentofarmComponent implements OnInit{
   dataSource: MatTableDataSource<MedicamentoFarmacia> = new MatTableDataSource()
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7','c8','c9']
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6','c7','c8']
 
   constructor(private mS: MedicamentofarmaciaService) { }
 
