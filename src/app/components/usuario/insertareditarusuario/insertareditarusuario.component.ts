@@ -80,15 +80,15 @@ export class InsertareditarusuarioComponent implements OnInit {
       this.usuario.idUsuario = this.form.value.codigo;
       this.usuario.username = this.form.value.user;
       this.usuario.password = this.form.value.contraseña;
-      this.usuario.enabled = this.form.value.estado;
       this.usuario.nombre = this.form.value.nombre;
+      this.usuario.enabled = this.form.value.estado;
       this.usuario.edadUsuario = this.form.value.edad;
       this.usuario.correoUsuario = this.form.value.correo;
       this.usuario.generoUsuario = this.form.value.genero;
       this.usuario.telefonoUsuario = this.form.value.telefono;
       this.usuario.direccionUsuario = this.form.value.direccion;
       this.usuario.fechaRegistroUsuario = this.form.value.fecha;
-      this.usuario.especialista = this.form.value.especialista;
+      this.usuario.especialista.idEspecialista = this.form.value.especialista;
       if (this.edicion) {
         this.uS.update(this.usuario).subscribe(() => {
           this.uS.list().subscribe((data) => {
@@ -111,11 +111,11 @@ export class InsertareditarusuarioComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.uS.listId(this.id).subscribe((data) => {
-        this.usuario = data;
         this.form = new FormGroup({
-          nombre: new FormControl(data.nombre),
+          codigo: new FormControl(data.idUsuario),
           user: new FormControl(data.username),
           contraseña: new FormControl(data.password),
+          nombre: new FormControl(data.nombre),
           estado: new FormControl(data.enabled),
           edad: new FormControl(data.edadUsuario),
           correo: new FormControl(data.correoUsuario),
@@ -123,7 +123,7 @@ export class InsertareditarusuarioComponent implements OnInit {
           telefono: new FormControl(data.telefonoUsuario),
           direccion: new FormControl(data.direccionUsuario),
           fecha: new FormControl(data.fechaRegistroUsuario),
-          especialista: new FormControl(data.especialista),
+          especialista: new FormControl(data.especialista.idEspecialista),
         });
       });
     }

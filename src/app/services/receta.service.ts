@@ -43,4 +43,17 @@ export class RecetaService {
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  // búsquedas
+  buscarPorUsuario(idUsuario: number) {
+    return this.http.get<Receta[]>(
+      `${this.url}/busquedas-por-usuario/${idUsuario}`
+    );
+  }
+
+  buscarPorFechaInicio(fecha: string) {
+    return this.http.get<Receta[]>(`${this.url}/busquedas-por-fecha-inicio`, {
+      params: { fecha_inicio_receta: fecha },
+    });
+  }
 }

@@ -14,6 +14,10 @@
       <mat-icon>record_voice_over</mat-icon>
       Especialistas
     </button>
+    <button mat-button [matMenuTriggerFor]="menuMedFarmacias" class="btn-rojo">
+      <mat-icon>store_mall_directory</mat-icon>
+      Medicamentos Farmacias
+    </button>
     <button mat-button [matMenuTriggerFor]="menuMedicamentos" class="btn-rojo">
       <mat-icon>local_hospital</mat-icon>
       Medicamentos
@@ -46,7 +50,7 @@
       <mat-icon> list_alt</mat-icon>
       Diagnósticos
     </button>
-        <button mat-button [matMenuTriggerFor]="menuReceta" class="btn-rojo">
+    <button mat-button [matMenuTriggerFor]="menuReceta" class="btn-rojo">
       <mat-icon> list_alt</mat-icon>
       Recetas
     </button>
@@ -70,7 +74,14 @@
     <mat-icon>add_to_photos</mat-icon> Registrar Farmacia
   </button>
 </mat-menu>
-
+<mat-menu #menuMedFarmacias="matMenu">
+  <button mat-menu-item routerLink="/medicamentosfarmacia">
+    <mat-icon>library_books</mat-icon> Listar Medicamento de farmacia
+  </button>
+  <button mat-menu-item routerLink="/medicamentosfarmacia/nuevo">
+    <mat-icon>add_to_photos</mat-icon> Registrar Medicamento de farmacia
+  </button>
+</mat-menu>
 <mat-menu #menuEspecialistas="matMenu">
   <button mat-menu-item routerLink="/especialistas">
     <mat-icon>library_books</mat-icon> Listar Especialistas
@@ -125,16 +136,28 @@
   </button>
 </mat-menu>
 <mat-menu #menuTratamiento="matMenu">
-  <button mat-menu-item routerLink="/tratamientos"><mat-icon>library_books</mat-icon> Listar Tratamientos</button>
-  <button mat-menu-item routerLink="/tratamientos/nuevo"><mat-icon>add_to_photos</mat-icon>Registrar tratamiento</button>
+  <button mat-menu-item routerLink="/tratamientos">
+    <mat-icon>library_books</mat-icon> Listar Tratamientos
+  </button>
+  <button mat-menu-item routerLink="/tratamientos/nuevo">
+    <mat-icon>add_to_photos</mat-icon>Registrar tratamiento
+  </button>
 </mat-menu>
 <mat-menu #menuDiagnostico="matMenu">
-  <button mat-menu-item routerLink="/diagnosticos"><mat-icon>library_books</mat-icon> Listar Diagnósticos</button>
-  <button mat-menu-item routerLink="/diagnosticos/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Diagnósticos</button>
+  <button mat-menu-item routerLink="/diagnosticos">
+    <mat-icon>library_books</mat-icon> Listar Diagnósticos
+  </button>
+  <button mat-menu-item routerLink="/diagnosticos/nuevo">
+    <mat-icon>add_to_photos</mat-icon> Registrar Diagnósticos
+  </button>
 </mat-menu>
 <mat-menu #menuReceta="matMenu">
-  <button mat-menu-item routerLink="/recetas"><mat-icon>library_books</mat-icon> Listar Recetas</button>
-  <button mat-menu-item routerLink="/recetas/nuevo"><mat-icon>add_to_photos</mat-icon> Registrar Recetas</button>
+  <button mat-menu-item routerLink="/recetas">
+    <mat-icon>library_books</mat-icon> Listar Recetas
+  </button>
+  <button mat-menu-item routerLink="/recetas/nuevo">
+    <mat-icon>add_to_photos</mat-icon> Registrar Recetas
+  </button>
 </mat-menu>
 <mat-menu #menuNotificacion="matMenu">
   <button mat-menu-item routerLink="/notificaciones"><mat-icon>library_books</mat-icon> Listar Recetas</button>

@@ -19,14 +19,35 @@ import { DisgnosticoComponent } from './components/disgnostico/disgnostico.compo
 import { InsertareditardiagnosticoComponent } from './components/disgnostico/insertareditardiagnostico/insertareditardiagnostico.component';
 import { RecetaComponent } from './components/receta/receta.component';
 import { InsertareditarrecetaComponent } from './components/receta/insertareditarreceta/insertareditarreceta.component';
+
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { ReportepacientesenriesgoComponent } from './components/reportes/reportepacientesenriesgo/reportepacientesenriesgo.component';
+
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { RegistroComponent } from './components/landing-page/registro/registro.component';
+import { LoginComponent } from './components/landing-page/login/login.component';
+import { MedicamentofarmaciaComponent } from './components/medicamentofarmacia/medicamentofarmacia.component';
+import { InsertareditarmedicamentofarmComponent } from './components/medicamentofarmacia/insertareditarmedicamentofarm/insertareditarmedicamentofarm.component';
+import { seguridadGuard } from './guard/seguridad.guard';
+
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'farmacias',
+    redirectTo: 'landing',
     pathMatch: 'full',
+  },
+  {
+    path: 'landing', component: LandingPageComponent,
+    children:
+    [
+      {
+        path:'registro', component: RegistroComponent
+      },
+      {
+        path: 'login',component: LoginComponent
+      }
+    ]
   },
   {
     path: 'farmacias',
@@ -41,6 +62,22 @@ export const routes: Routes = [
         component: InsertareditarfarmaciaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
+  },
+  {
+    path: 'medicamentosfarmacia',
+    component: MedicamentofarmaciaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarmedicamentofarmComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarmedicamentofarmComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'especialistas',
@@ -55,6 +92,7 @@ export const routes: Routes = [
         component: InsertareditarespecialistaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'medicamentos',
@@ -69,6 +107,7 @@ export const routes: Routes = [
         component: InsertareditarmedicamentoComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'usuarios',
@@ -83,6 +122,7 @@ export const routes: Routes = [
         component: InsertareditarusuarioComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'roles',
@@ -97,6 +137,7 @@ export const routes: Routes = [
         component: InsertareditarrolusuarioComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'contactosemergencia',
@@ -111,6 +152,7 @@ export const routes: Routes = [
         component: InsertareditarcontactoemergenciaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'perfilessalud',
@@ -125,6 +167,7 @@ export const routes: Routes = [
         component: InsertareditarperfilsaludComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'diagnosticos',
@@ -139,6 +182,7 @@ export const routes: Routes = [
         component: InsertareditardiagnosticoComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'tratamientos',
@@ -153,6 +197,7 @@ export const routes: Routes = [
         component: InsertareditartratamientoComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'recetas',
@@ -167,6 +212,7 @@ export const routes: Routes = [
         component: InsertareditarrecetaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'reportes',

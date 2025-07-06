@@ -59,8 +59,13 @@
                 <td mat-cell *matCellDef="let element"> {{element.especialista.nombreEspecialista}} </td>
             </ng-container>
 
-            <!-- Actualizar Column -->
             <ng-container matColumnDef="c10">
+                <th mat-header-cell *matHeaderCellDef> user </th>
+                <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+
+            <!-- Actualizar Column -->
+            <ng-container matColumnDef="c11">
                 <th mat-header-cell *matHeaderCellDef> Actualizar</th>
                 <td mat-cell *matCellDef="let element">
                     <button matButton [routerLink]="['ediciones', element.idUsuario]">
@@ -70,7 +75,7 @@
             </ng-container>
 
             <!-- Eliminar Column -->
-            <ng-container matColumnDef="c11">
+            <ng-container matColumnDef="c12">
                 <th mat-header-cell *matHeaderCellDef> Eliminar</th>
                 <td mat-cell *matCellDef="let element">
                     <button matButton (click)="eliminar(element.idUsuario)">

@@ -1,27 +1,50 @@
 <div class="container">
   <div style="text-align: center; margin: 5%">
     <h1>Lista de Recetas</h1>
+
+    <p>Total de Recetas: {{ totalRegistros }}</p>
   </div>
+
+  <form [formGroup]="filtroForm">
+    <div class="filtros" style="display: flex; gap: 1rem; margin-bottom: 1rem">
+      <!-- Usuario -->
+      <mat-form-field style="flex: 1" appearance="fill">
+        <mat-label>Filtrar por Usuario</mat-label>
+        <mat-select formControlName="usuarioId">
+          <mat-option value="">Todos</mat-option>
+          <mat-option
+            *ngFor="let usuario of listaUsuarios"
+            [value]="usuario.idUsuario"
+          >
+            {{ usuario.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Fecha de inicio -->
+      <mat-form-field style="flex: 1" appearance="fill">
+        <mat-label>Filtrar por Fecha de Inicio</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="fechaInicio"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
   <div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!-- Position Column -->
-      <ng-container matColumnDef="c1">
-        <!-- columnas -->
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <!-- nombre de columna a mostrar -->
-        <td mat-cell *matCellDef="let element">{{ element.idReceta }}</td>
-        <!-- nombre de columna de la bd -->
-      </ng-container>
-
       <!-- Symbol Column -->
-      <ng-container matColumnDef="c2">
+      <ng-container matColumnDef="c1">
         <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
         <td mat-cell *matCellDef="let element">
           {{ element.fechaInicioReceta | date : "dd/MM/yyyy" }}
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="c3">
+      <ng-container matColumnDef="c2">
         <th mat-header-cell *matHeaderCellDef>Fecha de vencimiento</th>
         <td mat-cell *matCellDef="let element">
           {{ element.fechaFinReceta | date : "dd/MM/yyyy" }}
@@ -29,29 +52,23 @@
       </ng-container>
 
       <!-- Descripción Column -->
-      <ng-container matColumnDef="c4">
+      <ng-container matColumnDef="c3">
         <th mat-header-cell *matHeaderCellDef>Observaciones</th>
-        <td mat-cell *matCellDef="let element">{{ element.observacionesReceta }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.observacionesReceta }}
+        </td>
       </ng-container>
 
       <!-- Usuario Column -->
-      <ng-container matColumnDef="c5">
+      <ng-container matColumnDef="c4">
         <th mat-header-cell *matHeaderCellDef>Usuario</th>
         <td mat-cell *matCellDef="let element">
           {{ element.usuario?.nombre || "Sin usuario" }}
         </td>
       </ng-container>
 
-            <!-- Diagnostico Column -->
-      <ng-container matColumnDef="c6">
-        <th mat-header-cell *matHeaderCellDef>Diagnóstico</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.diagnostico?.nombre || "Sin diagnóstico" }}
-        </td>
-      </ng-container>
-
       <!-- Symbol Column -->
-      <ng-container matColumnDef="c7">
+      <ng-container matColumnDef="c5">
         <th mat-header-cell *matHeaderCellDef>Actualizar</th>
         <td mat-cell *matCellDef="let element">
           <button matButton [routerLink]="['ediciones', element.idReceta]">
@@ -61,11 +78,11 @@
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="c8">
+      <ng-container matColumnDef="c6">
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
           <button matButton (click)="eliminar(element.idReceta)">
-            <mat-icon>delete_forever</mat-icon>
+            <mat-icon>delete</mat-icon>
           </button>
         </td>
       </ng-container>
@@ -73,5 +90,13 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+
+    <mat-paginator
+      [length]="totalRegistros"
+      [pageSize]="4"
+      [pageSizeOptions]="[4, 8, 10]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
   </div>
 </div>

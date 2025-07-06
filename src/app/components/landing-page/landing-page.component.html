@@ -1,0 +1,48 @@
+<header class="header">
+  <nav class="navbar">
+    <div> <a href="#banner" class="nav-item"> PILLCONTROL </a></div>
+    <div class="nav-links">
+      <button (click)="abrirModal('login')" class="nav-item login-button">
+        Inicio Sesión
+      </button>
+    </div>
+  </nav>
+</header>
+<router-outlet></router-outlet>
+<section class="banner" id="banner">
+  <div class="banner-content">
+    <img src="assets/pildora.png" alt="Píldora" class="banner-logo" />
+    <h1 class="banner-title">PILLCONTROL</h1>
+  </div>
+</section>
+<!-- SLOGAN -->
+<section class="slogan">
+  <div class="slogan-content">
+    <h2>¿Problemas al recordar cuándo debes tomar tus medicamentos?</h2>
+    <p>
+      No te preocupes, PillControl te ayudará a controlar y recibir
+      notificaciones para tomarlos a la hora y fecha indicada.
+    </p>
+   <button (click)="abrirModal('registro')" class="btn-register">
+      Registrarse <span class="arrow">→</span>
+    </button>
+  </div>
+</section>
+<!-- MODAL FLOTANTE -->
+<div *ngIf="modal" class="modal-backdrop" (click)="cerrarModal()"></div>
+<div *ngIf="modal" class="modal-content">
+  <button class="modal-close" (click)="cerrarModal()">✕</button>
+
+  <app-login *ngIf="modal === 'login'"></app-login>
+  <app-registro *ngIf="modal === 'registro'"></app-registro>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <small>
+      Copyright &copy; 2025 - Universidad Peruana de Ciencias Aplicadas <br />
+      Grupo 03 - Proyecto Final AAW <br />
+    </small>
+  </div>
+</footer>

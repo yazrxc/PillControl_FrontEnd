@@ -34,4 +34,14 @@ export class MedicamentoService {
   deleteA(id:number){
     return this.http.delete(`${this.url}/${id}`)
   }
+
+  // búsquedas
+    searchname(nombre:string){
+      const params={n:nombre} // en back : @RequestParam String n
+      return this.http.get<Medicamento[]>(`${this.url}/busqueda-nombres`,{params})
+    }
+    searchpresentaciones(pres:string){
+      const params={n:pres}
+      return this.http.get<Medicamento[]>(`${this.url}/busquedas-presentaciones`,{params})
+    }
 }
