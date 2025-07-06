@@ -26,8 +26,9 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
-          allowedDomains: ['localhost:8084'],
-          disallowedRoutes: ['http://localhost:8084/login/forget'],
+          // modificar según puerto del back
+          allowedDomains: ['localhost:8083'],
+          disallowedRoutes: ['http://localhost:8083/login/forget'],
         },
       })
     )
