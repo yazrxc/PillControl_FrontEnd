@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Reporte de Notificaciones según su estado</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div id="chart-container" style="display: flex; justify-content: center; padding: 20px;">
+      <canvas baseChart
+              [data]="pieChartData"
+              [type]="pieChartType"
+              [options]="pieChartOptions">
+      </canvas>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 10px;">
+      <button mat-raised-button color="primary" (click)="exportToPDF()">
+        Exportar a PDF
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
