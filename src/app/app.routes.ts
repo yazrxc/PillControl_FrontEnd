@@ -36,6 +36,7 @@ import { NotificacionComponent } from './components/notificacion/notificacion.co
 import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
 
 import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
+import { ReporteNotificacionesComponent } from './components/reportes/reporte-notificaciones/reporte-notificaciones.component';
 
 
 export const routes: Routes = [
@@ -237,6 +238,7 @@ export const routes: Routes = [
         component: InsertareditardetallerecetaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'notificaciones',
@@ -251,8 +253,9 @@ export const routes: Routes = [
         component: InsertareditarnotificacionComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
-
+  {
     path: 'reportes',
     component: ReportesComponent,
     children: [
@@ -264,6 +267,11 @@ export const routes: Routes = [
       {
         path: 'recetas-vencidas',
         component: RecetasvencidasComponent,
+      },
+        
+      {
+        path: 'reporte-notificaciones',
+        component: ReporteNotificacionesComponent,
       },
     ],
   },
