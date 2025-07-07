@@ -1,0 +1,124 @@
+.usuario-detalle-container {
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+.usuario-card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.usuario-foto img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.usuario-info {
+  flex: 1;
+}
+
+.usuario-info p {
+  font-size: 16px;
+  margin: 0.5rem 0;
+}
+
+.activo {
+  color: green;
+  font-weight: bold;
+}
+
+.inactivo {
+  color: red;
+  font-weight: bold;
+}
+
+.volver-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.volver-btn button {
+  padding: 10px 30px;
+  font-size: 15px;
+  border-radius: 50px;
+  background-color: #000000;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.volver-btn button:hover {
+  background-color: #559dd8;
+}
+
+
+
+.contenedor-encabezado {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+
+}
+
+.encabezado {
+  background-color: white;
+  width: 100%;
+  padding: 0px 0px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1000;
+  border-bottom: 3px solid black;
+  /* 👈 línea negra delgada */
+}
+
+
+.contenedor-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.dashboard {
+  background-color: #BDDC7E;
+  padding: 30px 15px;
+  min-height: 100vh;
+  margin-top: -20px; /* 👈 crea separación visible para que aparezca el borde */
+}
+
+.logopng {
+  width: 90px;
+  height: auto;
+  margin-left: -140px;
+  margin-top: -70px;
+}
+
+.titulopng {
+  width: 140px;
+  height: auto;
+  margin-left: 10px;
+  margin-top: -70px;
+}
+.logo-centro {
+  display: block;
+  margin: 20px auto 10px auto; /* top, right, bottom, left */
+  margin-left: 455px;
+  width: 100px;
+  height: auto;
+}
