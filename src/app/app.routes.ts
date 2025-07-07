@@ -36,7 +36,7 @@ import { NotificacionComponent } from './components/notificacion/notificacion.co
 import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
 
 import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
-
+import { MedicamentoporgravedadComponent } from './components/reportes/medicamentoporgravedad/medicamentoporgravedad.component';
 
 export const routes: Routes = [
   {
@@ -224,7 +224,6 @@ export const routes: Routes = [
     canActivate: [seguridadGuard],
   },
   {
-
     path: 'detallesrecetas',
     component: DetallerecetaComponent,
     children: [
@@ -260,10 +259,14 @@ export const routes: Routes = [
         path: 'reportepacientesenriesgo',
         component: ReportepacientesenriesgoComponent,
       },
-      
+
       {
         path: 'recetas-vencidas',
         component: RecetasvencidasComponent,
+      },
+      {
+        path: 'medicamentos-graves',
+        component: MedicamentoporgravedadComponent,
       },
     ],
   },
