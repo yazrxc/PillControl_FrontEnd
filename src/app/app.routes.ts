@@ -37,7 +37,6 @@ import { DetallerecetaComponent } from './components/detallereceta/detallereceta
 import { InsertareditardetallerecetaComponent } from './components/detallereceta/insertareditardetallereceta/insertareditardetallereceta.component';
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
 import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
-import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 
 export const routes: Routes = [
   {
