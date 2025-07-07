@@ -33,6 +33,12 @@ import { MedicamentofarmaciaComponent } from './components/medicamentofarmacia/m
 import { InsertareditarmedicamentofarmComponent } from './components/medicamentofarmacia/insertareditarmedicamentofarm/insertareditarmedicamentofarm.component';
 import { seguridadGuard } from './guard/seguridad.guard';
 
+import { DetallerecetaComponent } from './components/detallereceta/detallereceta.component';
+import { InsertareditardetallerecetaComponent } from './components/detallereceta/insertareditardetallereceta/insertareditardetallereceta.component';
+import { NotificacionComponent } from './components/notificacion/notificacion.component';
+import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
+
+import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 
 export const routes: Routes = [
   {
@@ -41,16 +47,18 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'landing', component: LandingPageComponent,
-    children:
-    [
+    path: 'landing',
+    component: LandingPageComponent,
+    children: [
       {
-        path:'registro', component: RegistroComponent
+        path: 'registro',
+        component: RegistroComponent,
       },
       {
-        path: 'login',component: LoginComponent
-      }
-    ]
+        path: 'login',
+        component: LoginComponent,
+      },
+    ],
   },
   {
     path: 'farmacias',
@@ -218,6 +226,34 @@ export const routes: Routes = [
     canActivate: [seguridadGuard],
   },
   {
+    path: 'detallesrecetas',
+    component: DetallerecetaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditardetallerecetaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditardetallerecetaComponent,
+      },
+    ],
+  },
+  {
+    path: 'notificaciones',
+    component: NotificacionComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditarnotificacionComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarnotificacionComponent,
+      },
+    ],
+  },
+  {
     path: 'reportes',
     component: ReportesComponent,
     children: [
@@ -233,7 +269,10 @@ export const routes: Routes = [
         path: 'reporteubicacionesfarmacias',
         component: ReporteubicacionesfarmaciaasComponent,
       },
+      {
+        path: 'recetas-vencidas',
+        component: RecetasvencidasComponent,
+      },
     ],
   },
-  
 ];

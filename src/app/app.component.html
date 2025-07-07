@@ -1,2 +1,6 @@
-<app-menu *ngIf="mostrarMenuFlag"></app-menu>
-<router-outlet></router-outlet>
+<div class="app-layout">
+    <app-menu *ngIf="mostrarMenuFlag"></app-menu>
+    <div  class="app-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
