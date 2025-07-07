@@ -22,6 +22,9 @@ import { InsertareditarrecetaComponent } from './components/receta/insertaredita
 
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { ReportepacientesenriesgoComponent } from './components/reportes/reportepacientesenriesgo/reportepacientesenriesgo.component';
+import { ReportefarmaciasabrentempranoComponent } from './components/reportes/reportefarmaciasabrentemprano/reportefarmaciasabrentemprano.component';
+import { ReporteubicacionesfarmaciaasComponent } from './components/reportes/reporteubicacionesfarmacias/reporteubicacionesfarmacias.component';
+import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistroComponent } from './components/landing-page/registro/registro.component';
@@ -34,9 +37,6 @@ import { DetallerecetaComponent } from './components/detallereceta/detallereceta
 import { InsertareditardetallerecetaComponent } from './components/detallereceta/insertareditardetallereceta/insertareditardetallereceta.component';
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
 import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
-
-import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
-
 
 export const routes: Routes = [
   {
@@ -257,10 +257,17 @@ export const routes: Routes = [
     component: ReportesComponent,
     children: [
       {
+        path: 'reportefarmaciasabrentemprano',
+        component: ReportefarmaciasabrentempranoComponent,
+      },
+      {
+        path: 'reporteubicacionesfarmacias',
+        component: ReporteubicacionesfarmaciaasComponent,
+      },
+      {
         path: 'reportepacientesenriesgo',
         component: ReportepacientesenriesgoComponent,
       },
-      
       {
         path: 'recetas-vencidas',
         component: RecetasvencidasComponent,
