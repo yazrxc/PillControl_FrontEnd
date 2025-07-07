@@ -154,3 +154,8 @@ a.mat-list-item:hover {
 a.mat-list-item:hover mat-icon {
   color: black !important;
 }
+
+/* Ícono del botón de usuario en negro */
+.header-right .user-button mat-icon {
+  color: var(--negro) !important; /* <- fuerza el color negro */
+}
