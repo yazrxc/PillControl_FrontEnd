@@ -227,7 +227,6 @@ export const routes: Routes = [
     canActivate: [seguridadGuard],
   },
   {
-
     path: 'detallesrecetas',
     component: DetallerecetaComponent,
     children: [
