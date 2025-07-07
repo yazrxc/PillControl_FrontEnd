@@ -1,0 +1,39 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>Reporte de Ubicaciones de Farmacias</h1>
+    <p>La consulta sobre las ubicaciones de las farmacias es importante para realizar un análisis geoespacial. Facilita la planificación de rutas y servicios de entrega, así como la identificación de áreas con una alta concentración de farmacias, lo que puede ayudar a mejorar la cobertura de servicios y garantizar que los productos estén disponibles en todas las zonas necesarias.</p>
+    
+    <!-- Mostrar la cantidad de registros -->
+    <p *ngIf="!notResults">Total de Ubicaciones: {{ totalRegistros }}</p>
+    <p *ngIf="notResults">No se encontraron ubicaciones registradas.</p>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <!-- Latitud Column -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef> Latitud </th>
+        <td mat-cell *matCellDef="let element"> {{element.latitud}} </td>
+      </ng-container>
+
+      <!-- Longitud Column -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef> Longitud </th>
+        <td mat-cell *matCellDef="let element"> {{element.longitud}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Paginador -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
