@@ -22,8 +22,6 @@ import { InsertareditarrecetaComponent } from './components/receta/insertaredita
 
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { ReportepacientesenriesgoComponent } from './components/reportes/reportepacientesenriesgo/reportepacientesenriesgo.component';
-import { ReportefarmaciasabrentempranoComponent } from './components/reportes/reportefarmaciasabrentemprano/reportefarmaciasabrentemprano.component';
-import { ReporteubicacionesfarmaciaasComponent } from './components/reportes/reporteubicacionesfarmacias/reporteubicacionesfarmacias.component';
 import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
@@ -37,6 +35,7 @@ import { DetallerecetaComponent } from './components/detallereceta/detallereceta
 import { InsertareditardetallerecetaComponent } from './components/detallereceta/insertareditardetallereceta/insertareditardetallereceta.component';
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
 import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
+import { DetalleusuarioComponent } from './components/usuario/detalleusuario/detalleusuario.component';
 
 export const routes: Routes = [
   {
@@ -130,6 +129,10 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertareditarusuarioComponent,
       },
+      {
+        path: 'detalleusuario/:id',
+        component: DetalleusuarioComponent,
+      }
     ],
     canActivate: [seguridadGuard],
   },
@@ -255,14 +258,6 @@ export const routes: Routes = [
     path: 'reportes',
     component: ReportesComponent,
     children: [
-      {
-        path: 'reportefarmaciasabrentemprano',
-        component: ReportefarmaciasabrentempranoComponent,
-      },
-      {
-        path: 'reporteubicacionesfarmacias',
-        component: ReporteubicacionesfarmaciaasComponent,
-      },
       {
         path: 'reportepacientesenriesgo',
         component: ReportepacientesenriesgoComponent,
