@@ -35,4 +35,22 @@ export class FarmaciaService {
   deleteA(id:number){
     return this.http.delete(`${this.url}/${id}`)
   }
+
+  // Queries del parcial
+  farmaciasAbreTemprano(horaApertura: string) {
+    return this.http.get<any[]>(`${this.url}/farmacias-abren-temprano?horaApertura=${horaApertura}`);
+  }
+
+  ubicacionesFarmacias() {
+    return this.http.get<any[]>(`${this.url}/ubicaciones`);
+  }
+
+  // Métodos adicionales que tienes en el backend
+  buscarPorNombre(nombre: string) {
+    return this.http.get<Farmacia[]>(`${this.url}/buscar/${nombre}`);
+  }
+
+  verificarHorario(id: number) {
+    return this.http.get<boolean>(`${this.url}/verificar-horario/${id}`);
+  }
 }
