@@ -36,6 +36,10 @@ import { InsertareditardetallerecetaComponent } from './components/detallereceta
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
 import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
 import { DetalleusuarioComponent } from './components/usuario/detalleusuario/detalleusuario.component';
+import { EdadPromedioUsuario } from './models/edadpromUsuario';
+import { EdadpromUsuarioComponent } from './components/reportes/edadprom-usuario/edadprom-usuario.component';
+import { TratamientoUsuarioComponent } from './components/reportes/tratamiento-usuario/tratamiento-usuario.component';
+import { MedicamentosbygravedadComponent } from './components/reportes/medicamentosbygravedad/medicamentosbygravedad.component';
 
 export const routes: Routes = [
   {
@@ -266,6 +270,18 @@ export const routes: Routes = [
         path: 'recetas-vencidas',
         component: RecetasvencidasComponent,
       },
+      {
+        path:'edadpromUsuario',
+        component:EdadpromUsuarioComponent
+      },
+      {
+        path:'trtamientosUsuario',
+        component:TratamientoUsuarioComponent
+      },
+      {
+        path:'medicamentoGravedad',
+        component: MedicamentosbygravedadComponent
+      }
     ],
   },
 ];
