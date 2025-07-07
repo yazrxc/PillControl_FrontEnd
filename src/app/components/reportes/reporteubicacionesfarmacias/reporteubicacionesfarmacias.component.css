@@ -1,0 +1,45 @@
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+h1 {
+  color: #1976d2;
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: justify;
+  margin: 10px 20px;
+  line-height: 1.6;
+}
+
+.mat-elevation-z8 {
+  margin-bottom: 20px;
+}
+
+.mat-mdc-cell {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.mat-mdc-cell:nth-child(4),
+.mat-mdc-cell:nth-child(5) {
+  font-weight: 500;
+  color: #1976d2;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  
+  table {
+    font-size: 12px;
+  }
+}
