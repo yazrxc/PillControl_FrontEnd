@@ -265,6 +265,11 @@ export const routes: Routes = [
         path: 'recetas-vencidas',
         component: RecetasvencidasComponent,
       },
+      {
+        path: 'recetas-vencidas',
+        component: RecetasvencidasComponent,
+      },
+
     ],
   },
 ];
