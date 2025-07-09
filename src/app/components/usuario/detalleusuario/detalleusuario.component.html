@@ -1,0 +1,29 @@
+<div class="dashboard">
+  <div class="usuario-detalle-container">
+    <h2>Ficha del Usuario</h2>
+
+    <div class="usuario-card">
+      <div class="usuario-foto">
+        <img src="assets/user.png" alt="">
+      </div>
+      <div class="usuario-info">
+        <p><strong>ID:</strong> {{ usuario?.idUsuario}}</p>
+        <p><strong>Username:</strong> {{ usuario?.username }}</p>
+        <p><strong>Nombre:</strong> {{ usuario?.nombre }}</p>
+        <p><strong>Edad:</strong> {{ usuario?.edadUsuario }}</p>
+        <p><strong>Correo:</strong> {{ usuario?.correoUsuario }}</p>
+        <p><strong>Genero:</strong> {{ usuario?.generoUsuario }}</p>
+        <p><strong>Teléfono:</strong> {{ usuario?.telefonoUsuario }}</p>
+        <p><strong>Estado:</strong> <span [ngClass]="usuario?.enabled? 'activo' : 'inactivo'">{{ usuario?.enabled ?
+            'Activo' : 'Inactivo' }}</span></p>
+        <p><strong>Direccion:</strong> {{ usuario?.direccionUsuario }}</p>
+        <p><strong>Fecha:</strong> {{ usuario?.fechaRegistroUsuario }}</p>
+        <p><strong>Especialista:</strong> {{ usuario?.especialista?.nombreEspecialista }}</p>
+      </div>
+    </div>
+
+    <div class="volver-btn">
+      <button mat-raised-button color="primary" routerLink="/usuarios">Volver</button>
+    </div>
+  </div>
+</div>

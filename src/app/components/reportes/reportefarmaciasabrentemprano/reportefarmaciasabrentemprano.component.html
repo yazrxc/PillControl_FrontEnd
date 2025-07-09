@@ -1,0 +1,57 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>Reporte de Farmacias que Abren Temprano</h1>
+    <p>Esta consulta permite conocer qué farmacias abren temprano en base a un horario ingresado, lo que es muy útil para los clientes que necesitan acceder a medicamentos a primera hora. Además, esta información es clave para gestionar los horarios de atención y satisfacer las necesidades de los clientes que buscan farmacias abiertas en horarios tempranos.</p>
+    
+    <!-- Formulario de búsqueda -->
+    <form [formGroup]="form" (ngSubmit)="buscarFarmacias()">
+      <mat-form-field appearance="outline">
+        <mat-label>Hora de Apertura (HH:MM)</mat-label>
+        <input matInput formControlName="horaApertura" placeholder="08:00">
+        <mat-error *ngIf="form.get('horaApertura')?.hasError('required')">
+          La hora de apertura es requerida
+        </mat-error>
+        <mat-error *ngIf="form.get('horaApertura')?.hasError('pattern')">
+          Formato de hora inválido (HH:MM)
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        <mat-icon>search</mat-icon>
+        Buscar Farmacias
+      </button>
+    </form>
+
+    <!-- Mostrar la cantidad de registros -->
+    <p *ngIf="!notResults">Total de Farmacias: {{ totalRegistros }}</p>
+    <p *ngIf="notResults">No se encontraron resultados para la hora especificada.</p>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <!-- Dirección Column -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef> Dirección </th>
+        <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+      </ng-container>
+
+      <!-- Horario Column -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef> Horario </th>
+        <td mat-cell *matCellDef="let element"> {{element.horario}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Paginador -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

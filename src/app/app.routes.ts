@@ -22,6 +22,7 @@ import { InsertareditarrecetaComponent } from './components/receta/insertaredita
 
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { ReportepacientesenriesgoComponent } from './components/reportes/reportepacientesenriesgo/reportepacientesenriesgo.component';
+import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistroComponent } from './components/landing-page/registro/registro.component';
@@ -34,6 +35,7 @@ import { DetallerecetaComponent } from './components/detallereceta/detallereceta
 import { InsertareditardetallerecetaComponent } from './components/detallereceta/insertareditardetallereceta/insertareditardetallereceta.component';
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
 import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
+import { DetalleusuarioComponent } from './components/usuario/detalleusuario/detalleusuario.component';
 
 import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 import { ReporteNotificacionesComponent } from './components/reportes/reporte-notificaciones/reporte-notificaciones.component';
@@ -131,6 +133,10 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertareditarusuarioComponent,
       },
+      {
+        path: 'detalleusuario/:id',
+        component: DetalleusuarioComponent,
+      }
     ],
     canActivate: [seguridadGuard],
   },
@@ -225,7 +231,6 @@ export const routes: Routes = [
     canActivate: [seguridadGuard],
   },
   {
-
     path: 'detallesrecetas',
     component: DetallerecetaComponent,
     children: [
@@ -263,7 +268,6 @@ export const routes: Routes = [
         path: 'reportepacientesenriesgo',
         component: ReportepacientesenriesgoComponent,
       },
-      
       {
         path: 'recetas-vencidas',
         component: RecetasvencidasComponent,

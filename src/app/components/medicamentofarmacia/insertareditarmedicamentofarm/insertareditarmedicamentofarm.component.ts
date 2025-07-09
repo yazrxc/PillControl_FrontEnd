@@ -42,16 +42,26 @@ export class InsertareditarmedicamentofarmComponent implements OnInit {
   estado: boolean = true;
   listaMedicamentos: Medicamento[] = [];
   listaFarmacias: Farmacia[] = [];
+  
+  id: number = 0;
+  edicion: boolean = false;
 
   constructor(
     private mS: MedicamentofarmaciaService,
     private router: Router,
     private formBuilder: FormBuilder,
     private meS: MedicamentoService,
-    private fS: FarmaciaService
+    private fS: FarmaciaService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
+    });
+
     this.form = this.formBuilder.group({
       idmedicamentoFarmacia: [''],
       cantidadMedicamentoFarmacia: ['', Validators.required],
@@ -61,6 +71,7 @@ export class InsertareditarmedicamentofarmComponent implements OnInit {
       medicamento: ['', Validators.required],
       farmacia: ['', Validators.required],
     });
+    
     this.meS.list().subscribe((data) => {
       this.listaMedicamentos = data;
     });
@@ -72,23 +83,46 @@ export class InsertareditarmedicamentofarmComponent implements OnInit {
     if (this.form.valid) {
       const formValue = this.form.value;
 
-      // Asegurar que los objetos anidados existan
       this.medicamentofarm = {
         idmedicamentoFarmacia: formValue.idmedicamentoFarmacia,
         cantidadMedicamentoFarmacia: formValue.cantidadMedicamentoFarmacia,
         tipoVentaMedicamentoFarmacia: formValue.tipoVentaMedicamentoFarmacia,
-        laboratorioMedicamentoFarmacia:
-          formValue.laboratorioMedicamentoFarmacia,
+        laboratorioMedicamentoFarmacia: formValue.laboratorioMedicamentoFarmacia,
         precioMedicamentoFarmacia: formValue.precioMedicamentoFarmacia,
         medicamento: { id_medicamento: formValue.medicamento } as Medicamento,
         farmacia: { idFarmacia: formValue.farmacia } as Farmacia,
       };
 
-      this.mS.insert(this.medicamentofarm).subscribe(() => {
-        this.mS.list().subscribe((data) => {
-          this.mS.setList(data);
+      if (this.edicion) {
+        this.mS.update(this.medicamentofarm).subscribe(() => {
+          this.mS.list().subscribe((data) => {
+            this.mS.setList(data);
+          });
+          this.router.navigate(['medicamentosfarmacia']);
         });
-        this.router.navigate(['medicamentosfarmacia']);
+      } else {
+        this.mS.insert(this.medicamentofarm).subscribe(() => {
+          this.mS.list().subscribe((data) => {
+            this.mS.setList(data);
+          });
+          this.router.navigate(['medicamentosfarmacia']);
+        });
+      }
+    }
+  }
+
+  init() {
+    if (this.edicion) {
+      this.mS.listId(this.id).subscribe((data: any) => {
+        this.form.patchValue({
+          idmedicamentoFarmacia: data.idmedicamentoFarmacia,
+          cantidadMedicamentoFarmacia: data.cantidadMedicamentoFarmacia,
+          tipoVentaMedicamentoFarmacia: data.tipoVentaMedicamentoFarmacia,
+          laboratorioMedicamentoFarmacia: data.laboratorioMedicamentoFarmacia,
+          precioMedicamentoFarmacia: data.precioMedicamentoFarmacia,
+          medicamento: data.medicamento.id_medicamento,
+          farmacia: data.farmacia.idFarmacia,
+        });
       });
     }
   }
