@@ -19,6 +19,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Diagnostico } from '../../../models/diagnostico';
 import { DisgnosticoService } from '../../../services/disgnostico.service';
 import { MatSelectModule } from '@angular/material/select';
+import { UsuarioService } from '../../../services/usuario.service';
+import { Usuario } from '../../../models/usuario';
 
 @Component({
   selector: 'app-insertareditartratamiento',
@@ -37,6 +39,7 @@ export class InsertareditartratamientoComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   tratamiento: Tratamiento = new Tratamiento();
   listaDiagnosticos: Diagnostico[] = [];
+  listaUsuarios: Usuario[]= [];
 
   id: number = 0;
   edicion: boolean = false;
@@ -46,7 +49,8 @@ export class InsertareditartratamientoComponent implements OnInit {
     private tS: TratamientoService,
     private router: Router,
     private route: ActivatedRoute,
-    private dS: DisgnosticoService
+    private dS: DisgnosticoService,
+    private uS: UsuarioService
   ) {}
 
   ngOnInit(): void {
@@ -62,9 +66,13 @@ export class InsertareditartratamientoComponent implements OnInit {
       objetivo: ['', Validators.required],
       estado: ['', Validators.required],
       diagnostico: ['', Validators.required],
+      usuario: ['', Validators.required],
     });
     this.dS.listar().subscribe((data) => {
       this.listaDiagnosticos = data;
+    });
+    this.uS.list().subscribe((data) => {
+      this.listaUsuarios = data;
     });
   }
   aceptar() {
@@ -74,6 +82,7 @@ export class InsertareditartratamientoComponent implements OnInit {
       this.tratamiento.objetivoTratamiento = this.form.value.objetivo;
       this.tratamiento.estadoTratamiento = this.form.value.estado;
       this.tratamiento.diagnostico.idDiagnostico = this.form.value.diagnostico;
+      this.tratamiento.usuario.idUsuario = this.form.value.usuario;
       if (this.edicion) {
         this.tS.update(this.tratamiento).subscribe(() => {
           this.tS.list().subscribe((data) => {
@@ -103,6 +112,7 @@ export class InsertareditartratamientoComponent implements OnInit {
           objetivo: new FormControl(data.objetivoTratamiento),
           estado: new FormControl(data.estadoTratamiento),
           diagnostico: new FormControl(data.diagnostico.idDiagnostico),
+          usuario: new FormControl(data.usuario?.idUsuario),
         });
       });
     }
