@@ -22,7 +22,6 @@ import { InsertareditarrecetaComponent } from './components/receta/insertaredita
 
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { ReportepacientesenriesgoComponent } from './components/reportes/reportepacientesenriesgo/reportepacientesenriesgo.component';
-import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistroComponent } from './components/landing-page/registro/registro.component';
