@@ -1,0 +1,17 @@
+<div class="container-edad">
+  <h2>Edad Promedio por Especialista</h2>
+
+  <mat-form-field appearance="fill" class="selector">
+    <mat-label>Selecciona un especialista</mat-label>
+    <mat-select [(value)]="idEspecialista" (selectionChange)="obtenerEdadPromedio()">
+      <mat-option *ngFor="let e of listaEspecialistas" [value]="e.idEspecialista">
+        {{ e.nombreEspecialista }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="edadPromedio !== null" class="resultado">
+    <mat-icon color="primary">person</mat-icon>
+    Edad promedio: <strong>{{ edadPromedio | number: '1.0-2' }} años</strong>
+  </div>
+</div>

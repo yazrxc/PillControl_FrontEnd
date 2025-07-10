@@ -1,0 +1,17 @@
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.selector {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.resultado {
+  margin-top: 1.5rem;
+  font-size: 20px;
+  color: #2e7d32;
+}
