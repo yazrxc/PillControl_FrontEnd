@@ -36,6 +36,6 @@ export class UsuarioService {
   } 
 
   edadpromedioporEspecialista(id: number) {
-    return this.http.get<number>(`${this.url}/edadpromedioUsuarioEspecialista/${id}`);
+    return this.http.get<number>(`${this.url}/edadpromedioUsuarioEspecialista?idEspecialista=${id}`);
   }
 }
