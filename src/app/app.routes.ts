@@ -41,6 +41,10 @@ import { EdadpromUsuarioComponent } from './components/reportes/edadprom-usuario
 import { TratamientoUsuarioComponent } from './components/reportes/tratamiento-usuario/tratamiento-usuario.component';
 import { MedicamentosbygravedadComponent } from './components/reportes/medicamentosbygravedad/medicamentosbygravedad.component';
 
+import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
+import { ReporteNotificacionesComponent } from './components/reportes/reporte-notificaciones/reporte-notificaciones.component';
+
+
 export const routes: Routes = [
   {
     path: '',
@@ -243,6 +247,7 @@ export const routes: Routes = [
         component: InsertareditardetallerecetaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'notificaciones',
@@ -257,6 +262,7 @@ export const routes: Routes = [
         component: InsertareditarnotificacionComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'reportes',
@@ -270,6 +276,13 @@ export const routes: Routes = [
         path: 'recetas-vencidas',
         component: RecetasvencidasComponent,
       },
+
+        
+      {
+        path: 'reporte-notificaciones',
+        component: ReporteNotificacionesComponent,
+      },
+
       {
         path:'edadpromUsuario',
         component:EdadpromUsuarioComponent
@@ -282,6 +295,7 @@ export const routes: Routes = [
         path:'medicamentoGravedad',
         component: MedicamentosbygravedadComponent
       }
+
     ],
   },
 ];
