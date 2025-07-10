@@ -6,6 +6,6 @@ export class Tratamiento {
     indicacionesTratamiento: string = '';
     objetivoTratamiento: string = '';
     estadoTratamiento: string = '';
-    usuario?: Usuario;
+    usuario: Usuario= new Usuario();
     diagnostico: Diagnostico = new Diagnostico();
 }
