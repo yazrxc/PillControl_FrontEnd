@@ -42,6 +42,12 @@
         <mat-error *ngIf="form.get('telefono')?.hasError('required')">
           El teléfono es obligatorio
         </mat-error>
+        <mat-error *ngIf="form.get('telefono')?.hasError('minlength')">
+          El teléfono debe tener 9 dígitos
+        </mat-error>
+        <mat-error *ngIf="form.get('telefono')?.hasError('maxlength')">
+          El teléfono no puede tener más de 9 dígitos
+        </mat-error>
       </mat-form-field>
       <br>
 
@@ -51,6 +57,9 @@
         <input matInput type="email" placeholder="Correo" formControlName="correo">
         <mat-error *ngIf="form.get('correo')?.hasError('required')">
           El correo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="form.get('correo')?.hasError('email')">
+          El correo no tiene un formato válido
         </mat-error>
       </mat-form-field>
       <br>

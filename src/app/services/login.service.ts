@@ -15,19 +15,18 @@ export class LoginService {
     return this.http.post('http://localhost:8083/login', request);
   }
   verificar() {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('token')) {
-      return true;
-    }
-    return false;
+    let token = sessionStorage.getItem('token');
+    return token != null;
   }
   showRole() {
-    if (typeof window === 'undefined') return null;
-
-    const token = sessionStorage.getItem('token');
-    if (!token) return null;
-
-    const helper = new JwtHelperService();
-    const decodedToken = helper.decodeToken(token);
-    return decodedToken?.role;
+  let token = sessionStorage.getItem('token');
+  if (!token) {
+    console.log('No token found!');
+    return null;
   }
+  const helper = new JwtHelperService();
+  const decodedToken = helper.decodeToken(token);
+  console.log(decodedToken); // Verifica que el token se decodifica correctamente
+  return decodedToken?.role;
+}
 }

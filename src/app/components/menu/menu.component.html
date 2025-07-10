@@ -5,10 +5,22 @@
   </div>
 
   <div class="header-right">
-    <button class="user-button">
+    <button mat-button [matMenuTriggerFor]="menuSalir" class="user-button">
       <mat-icon>account_circle</mat-icon>
       Usuario
     </button>
+
+    <!-- Menú desplegable de usuario -->
+    <mat-menu #menuSalir="matMenu">
+      <button mat-menu-item routerLink="/landing" (click)="cerrar()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+      <button mat-menu-item>
+        <span>Rol: </span>
+        <span>{{ role }}</span>
+      </button>
+    </mat-menu>
   </div>
 </header>
 

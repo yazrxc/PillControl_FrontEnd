@@ -54,8 +54,8 @@ export class InsertareditarcontactoemergenciaComponent implements OnInit{
       codigo:[''],
       nombre:['',Validators.required],
       parentesco:['',Validators.required],
-      telefono:['',Validators.required],
-      correo:['',Validators.required],
+      telefono:['',[Validators.required,Validators.minLength(9),Validators.maxLength(9)]],
+      correo:['',[Validators.required,Validators.email]],
       user:['',Validators.required]
     })
 
