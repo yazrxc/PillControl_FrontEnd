@@ -147,15 +147,30 @@ a.mat-list-item mat-icon {
 
 a.mat-list-item:hover {
   background-color: #8CBA2F !important;
-  color: black !important;
+  color: white !important;
   font-weight: bold;
 }
 
 a.mat-list-item:hover mat-icon {
-  color: black !important;
+  color: white !important;
 }
 
 /* Ícono del botón de usuario en negro */
 .header-right .user-button mat-icon {
   color: var(--negro) !important; /* <- fuerza el color negro */
 }
+
+mat-sidenav mat-list a.mat-list-item {
+  color: white !important;
+}
+
+mat-sidenav mat-list a.mat-list-item:hover {
+  color: white !important;
+  background-color: #8CBA2F !important;
+  font-weight: bold;
+}
+
+mat-sidenav mat-list a.mat-list-item:hover mat-icon {
+  color: white !important;
+}
+

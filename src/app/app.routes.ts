@@ -274,7 +274,6 @@ export const routes: Routes = [
         path: 'recetas-vencidas',
         component: RecetasvencidasComponent,
       },
-
         
       {
         path: 'reporte-notificaciones',
