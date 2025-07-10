@@ -10,13 +10,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { Tratamiento } from '../../../models/tratamiento';
 import { Usuario } from '../../../models/usuario';
-import { DetallerecetaService } from '../../../services/detallereceta.service';
+import { RecetaService } from '../../../services/receta.service';
 import { UsuarioService } from '../../../services/usuario.service';
-import { MedicamentoByGravedad } from '../../../models/medicamentobygravedad';
+import { TratamientoService } from '../../../services/tratamiento.service';
 
 @Component({
-  selector: 'app-medicamentosbygravedad',
+  selector: 'app-tratamiento-usuario',
   imports: [
     MatTableModule,
     CommonModule,
@@ -30,16 +31,13 @@ import { MedicamentoByGravedad } from '../../../models/medicamentobygravedad';
     MatNativeDateModule,
     MatSelectModule,
   ],
-  templateUrl: './medicamentosbygravedad.component.html',
-  styleUrl: './medicamentosbygravedad.component.css',
+  templateUrl: './tratamiento-usuario.component.html',
+  styleUrl: './tratamiento-usuario.component.css',
 })
-export class MedicamentosbygravedadComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['c1', 'c2', 'c3'];
+export class TratamientoUsuarioComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4'];
 
-  dataSource: MatTableDataSource<MedicamentoByGravedad> =
-    new MatTableDataSource();
-
-  totalRegistros: number = 0;
+  dataSource: MatTableDataSource<Tratamiento> = new MatTableDataSource();
 
   listaUsuarios: Usuario[] = [];
 
@@ -47,7 +45,7 @@ export class MedicamentosbygravedadComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private drS: DetallerecetaService, private uS: UsuarioService) {
+  constructor(private tS: TratamientoService, private uS: UsuarioService) {
     this.filtroForm = new FormGroup({
       usuarioId: new FormControl(''),
     });
@@ -55,6 +53,10 @@ export class MedicamentosbygravedadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.buscarPorUsuario(0);
+
+    this.tS.list().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+    });
 
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
@@ -68,9 +70,8 @@ export class MedicamentosbygravedadComponent implements OnInit, AfterViewInit {
   }
 
   buscarPorUsuario(id: number) {
-    this.drS.medicamentosByGravedad(id).subscribe((data) => {
+    this.tS.tratamientosPorUsuario(id).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
-      this.totalRegistros = data.length;
       this.dataSource.paginator = this.paginator;
     });
   }

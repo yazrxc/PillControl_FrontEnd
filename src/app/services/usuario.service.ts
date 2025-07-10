@@ -34,4 +34,8 @@ export class UsuarioService {
   deleteA(id:number){
     return this.http.delete(`${this.url}/${id}`)
   } 
+
+  edadpromedioporEspecialista(id: number) {
+    return this.http.get<number>(`${this.url}/edadpromedioUsuarioEspecialista?idEspecialista=${id}`);
+  }
 }

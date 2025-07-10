@@ -1,0 +1,33 @@
+<div class="contenedorEdadPromedio">
+  <h2 class="titulo">Reporte: Edad Promedio por Especialista</h2>
+
+  <mat-form-field appearance="fill" class="campo-select">
+    <mat-label>Selecciona un especialista</mat-label>
+    <mat-select [(ngModel)]="id">
+      <mat-option *ngFor="let esp of listaEspecialistas" [value]="esp.idEspecialista">
+        {{ esp.nombreEspecialista }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="obtenerEdadPromedio()" [disabled]="!id">
+    Promediar
+  </button>
+
+  <div *ngIf="edadPromedio !== null" class="resultadoEdad">
+    <mat-card>
+      <mat-card-title>Edad Promedio</mat-card-title>
+      <mat-card-content>
+        <h3>{{ edadPromedio | number:'1.1-1' }} años</h3>
+      </mat-card-content>
+    </mat-card>
+
+    <canvas baseChart
+            [data]="{
+              labels: chartLabels,
+              datasets: [{ data: chartData, backgroundColor: ['#42A5F5'] }]
+            }"
+            [type]="'doughnut'">
+    </canvas>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.contenedorEdadPromedio {
+  max-width: 600px;
+  margin: 3rem auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+.titulo {
+  margin-bottom: 1rem;
+}
+
+.campo-select {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+button {
+  margin-bottom: 2rem;
+}
+
+.resultadoEdad {
+  margin-top: 2rem;
+}
+
+mat-card {
+  background-color: #e3f2fd;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}

@@ -29,7 +29,7 @@
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
     "leaflet": "^1.9.4",
-    "ng2-charts": "^8.0.0",
+    "ng2-charts": "^4.1.1",
     "react-modal-wrapper": "^0.2.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

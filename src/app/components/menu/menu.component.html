@@ -187,6 +187,34 @@
           ><mat-icon>add_to_photos</mat-icon> Registrar</a
         >
       </mat-expansion-panel>
+      <!-- Detalles Recetas -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title
+            ><mat-icon>receipt</mat-icon> Detalles Recetas</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/detallesrecetas"
+          ><mat-icon>library_books</mat-icon> Listar</a
+        >
+        <a mat-list-item routerLink="/detallesrecetas/nuevo"
+          ><mat-icon>add_to_photos</mat-icon> Registrar</a
+        >
+      </mat-expansion-panel>
+      <!-- notificaciones -->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title
+            ><mat-icon>notifications</mat-icon> Notificaciones</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/notificaciones"
+          ><mat-icon>library_books</mat-icon> Listar</a
+        >
+        <a mat-list-item routerLink="/notificaciones/nuevo"
+          ><mat-icon>add_to_photos</mat-icon> Registrar</a
+        >
+      </mat-expansion-panel>
       <!-- Reportes -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -208,6 +236,19 @@
         >
         <a mat-list-item routerLink="/reportes/recetas-vencidas"
           ><mat-icon>warning</mat-icon> Reporte de Recetas Vencidas</a
+        >
+
+        <a mat-list-item routerLink="/reportes/reporte-notificaciones"
+          ><mat-icon>notifications</mat-icon> Reporte de Notificaciones</a
+        >
+        <a mat-list-item routerLink="/reportes/edadpromUsuario"
+          ><mat-icon>child_care</mat-icon> Reporte de Edad promedio por Especialista</a
+        >
+        <a mat-list-item routerLink="/reportes/trtamientosUsuario"
+          ><mat-icon>hot_tub</mat-icon> Reporte de Tratamientos por usuario</a
+        >
+        <a mat-list-item routerLink="/reportes/medicamentoGravedad"
+          ><mat-icon>warning</mat-icon> Reporte de medicamentos por gravedad</a
         >
       </mat-expansion-panel>
     </mat-nav-list>

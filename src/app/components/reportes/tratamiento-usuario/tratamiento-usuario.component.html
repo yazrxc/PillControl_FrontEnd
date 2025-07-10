@@ -1,8 +1,8 @@
 <div class="container">
   <div style="text-align: center; margin: 5%">
-    <h1>Lista de Medicamentos con gravedad <strong>Alta</strong></h1>
+    <h1>Lista de Tratamientos por usuario</h1>
 
-    <p>Total de resultados: {{ totalRegistros }}</p>
+    <p>Total de Tratamientos: {{ dataSource.data.length}}</p>
   </div>
 
   <form [formGroup]="filtroForm">
@@ -26,24 +26,32 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Symbol Column -->
       <ng-container matColumnDef="c1">
-        <th mat-header-cell *matHeaderCellDef>Nombre del medicamento</th>
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.nombreMedicamento }}
+          {{ element.estadoTratamiento}}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef>Tipo del medicamento</th>
+        <th mat-header-cell *matHeaderCellDef>indicacionesTratamiento</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.tipoMedicamento }}
+          {{ element.indicacionesTratamiento}}
         </td>
       </ng-container>
 
       <!-- Descripción Column -->
       <ng-container matColumnDef="c3">
-        <th mat-header-cell *matHeaderCellDef>Diagnóstico</th>
+        <th mat-header-cell *matHeaderCellDef>objetivoTratamiento</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.nombreDiagnostico }}
+          {{ element.objetivoTratamiento }}
+        </td>
+      </ng-container>
+
+      <!-- Usuario Column -->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.usuario?.nombre || "Sin usuario" }}
         </td>
       </ng-container>
 
@@ -52,7 +60,6 @@
     </table>
 
     <mat-paginator
-      [length]="totalRegistros"
       [pageSize]="4"
       [pageSizeOptions]="[4, 8, 10]"
       aria-label="Select page"
