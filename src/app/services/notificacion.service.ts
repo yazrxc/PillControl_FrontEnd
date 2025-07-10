@@ -37,4 +37,9 @@ export class NotificacionService {
     getUrl(): string {
       return this.url;
     }
+    getResumenEstados() {
+      return this.http.get<{ cumplidas: number; noCumplidas: number }>(
+      `${this.url}/notificaciones/estado/resumen`
+      );
+    }
 }

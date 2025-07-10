@@ -22,9 +22,6 @@ import { InsertareditarrecetaComponent } from './components/receta/insertaredita
 
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { ReportepacientesenriesgoComponent } from './components/reportes/reportepacientesenriesgo/reportepacientesenriesgo.component';
-import { ReportefarmaciasabrentempranoComponent } from './components/reportes/reportefarmaciasabrentemprano/reportefarmaciasabrentemprano.component';
-import { ReporteubicacionesfarmaciaasComponent } from './components/reportes/reporteubicacionesfarmacias/reporteubicacionesfarmacias.component';
-import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistroComponent } from './components/landing-page/registro/registro.component';
@@ -37,6 +34,14 @@ import { DetallerecetaComponent } from './components/detallereceta/detallereceta
 import { InsertareditardetallerecetaComponent } from './components/detallereceta/insertareditardetallereceta/insertareditardetallereceta.component';
 import { NotificacionComponent } from './components/notificacion/notificacion.component';
 import { InsertareditarnotificacionComponent } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion.component';
+import { DetalleusuarioComponent } from './components/usuario/detalleusuario/detalleusuario.component';
+import { EdadpromUsuarioComponent } from './components/reportes/edadprom-usuario/edadprom-usuario.component';
+import { TratamientoUsuarioComponent } from './components/reportes/tratamiento-usuario/tratamiento-usuario.component';
+import { MedicamentosbygravedadComponent } from './components/reportes/medicamentosbygravedad/medicamentosbygravedad.component';
+
+import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
+import { ReporteNotificacionesComponent } from './components/reportes/reporte-notificaciones/reporte-notificaciones.component';
+
 
 export const routes: Routes = [
   {
@@ -130,6 +135,10 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: InsertareditarusuarioComponent,
       },
+      {
+        path: 'detalleusuario/:id',
+        component: DetalleusuarioComponent,
+      }
     ],
     canActivate: [seguridadGuard],
   },
@@ -236,6 +245,7 @@ export const routes: Routes = [
         component: InsertareditardetallerecetaComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'notificaciones',
@@ -250,19 +260,12 @@ export const routes: Routes = [
         component: InsertareditarnotificacionComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'reportes',
     component: ReportesComponent,
     children: [
-      {
-        path: 'reportefarmaciasabrentemprano',
-        component: ReportefarmaciasabrentempranoComponent,
-      },
-      {
-        path: 'reporteubicacionesfarmacias',
-        component: ReporteubicacionesfarmaciaasComponent,
-      },
       {
         path: 'reportepacientesenriesgo',
         component: ReportepacientesenriesgoComponent,
@@ -271,10 +274,24 @@ export const routes: Routes = [
         path: 'recetas-vencidas',
         component: RecetasvencidasComponent,
       },
+        
       {
-        path: 'recetas-vencidas',
-        component: RecetasvencidasComponent,
+        path: 'reporte-notificaciones',
+        component: ReporteNotificacionesComponent,
       },
+
+      {
+        path:'edadpromUsuario',
+        component:EdadpromUsuarioComponent
+      },
+      {
+        path:'trtamientosUsuario',
+        component:TratamientoUsuarioComponent
+      },
+      {
+        path:'medicamentoGravedad',
+        component: MedicamentosbygravedadComponent
+      }
 
     ],
   },
