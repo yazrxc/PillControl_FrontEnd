@@ -4,13 +4,14 @@ import { ChartOptions, ChartType, ChartData } from 'chart.js';
 import { NotificacionService } from '../../../services/notificacion.service';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { NgChartsModule } from 'ng2-charts'; 
+import { NgChartsModule } from 'ng2-charts';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
 
 @Component({
   selector: 'app-reporte-notificaciones',
+  standalone: true,
   imports: [
     CommonModule,
     MatCardModule,
