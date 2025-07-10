@@ -12,5 +12,23 @@
 </head>
 <body class="mat-typography">
   <app-root></app-root>
+  <!-- Script Dialogflow -->
+<!-- Dialogflow Messenger script -->
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+<!-- Chatbot de Dialogflow - estilo nativo optimizado -->
+<df-messenger
+  chat-title="Asistente Médico"
+  agent-id="e4cc9e03-35c7-4b93-aa1b-f8af86406709"
+  language-code="es"
+  img src= "https://cdn-icons-png.flaticon.com/512/6676/6676231.png" width="64" height="64" alt="corazon"
+  user-message="#1976d2"
+  bot-message="#4caf50"
+  background-color="#ffffff"
+  font-family="Arial, sans-serif"
+  intent="WELCOME"
+  style="--df-messenger-button-titlebar-color: #1976d2; z-index: 9999;">
+</df-messenger>
+
 </body>
 </html>
