@@ -45,6 +45,15 @@
         </mat-select>
       </mat-form-field>
       <br />
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="usuario">
+          @for (u of listaUsuarios; track u) {
+          <mat-option [value]="u.idUsuario">{{ u.nombre}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br>
       <button matButton="elevated">
         {{ edicion ? "Actualizar" : "Registrar" }}
       </button>

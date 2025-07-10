@@ -41,6 +41,7 @@ import { MedicamentosbygravedadComponent } from './components/reportes/medicamen
 
 import { RecetasvencidasComponent } from './components/reportes/recetasvencidas/recetasvencidas.component';
 import { ReporteNotificacionesComponent } from './components/reportes/reporte-notificaciones/reporte-notificaciones.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 export const routes: Routes = [
@@ -48,6 +49,9 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'landing',
     pathMatch: 'full',
+  },
+  {
+    path: 'home',component:HomeComponent
   },
   {
     path: 'landing',
@@ -292,7 +296,7 @@ export const routes: Routes = [
         path:'medicamentoGravedad',
         component: MedicamentosbygravedadComponent
       }
-
     ],
+    canActivate: [seguridadGuard],
   },
 ];

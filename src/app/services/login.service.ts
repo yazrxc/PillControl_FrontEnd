@@ -12,7 +12,7 @@ export class LoginService {
   login(request: JwtRequest) {
 
     // modificar según puerto del back
-    return this.http.post('http://localhost:8083/login', request);
+    return this.http.post<any>('http://localhost:8083/login', request);
   }
   verificar() {
     let token = sessionStorage.getItem('token');

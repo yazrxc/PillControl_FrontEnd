@@ -36,6 +36,6 @@ export class TratamientoService {
   }
 
   tratamientosPorUsuario(id: number) {
-    return this.http.get<Tratamiento[]>(`${this.url}/tratamientosusuario/${id}`);
+    return this.http.get<Tratamiento[]>(`${this.url}/tratamientosusuario?idUsuario=${id}`);
   }
 }

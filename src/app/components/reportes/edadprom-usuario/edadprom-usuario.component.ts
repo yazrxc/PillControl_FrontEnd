@@ -1,45 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { Especialista } from '../../../models/especialista';
 import { UsuarioService } from '../../../services/usuario.service';
 import { EspecialistaService } from '../../../services/especialista.service';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
 
 @Component({
   selector: 'app-edadprom-usuario',
-  imports: [MatFormField, MatSelectModule, MatIconModule, CommonModule],
+  imports: [
+    MatFormField,
+    MatSelectModule,
+    MatIconModule,
+    CommonModule,
+    MatCardModule,
+    FormsModule,
+    NgChartsModule,
+  ],
   templateUrl: './edadprom-usuario.component.html',
-  styleUrl: './edadprom-usuario.component.css'
+  styleUrl: './edadprom-usuario.component.css',
 })
-export class EdadpromUsuarioComponent implements OnInit {
-  idEspecialista: number | null = null;
-  edadPromedio: number | null = null;
+export class EdadpromUsuarioComponent implements OnInit{
   listaEspecialistas: Especialista[] = [];
+  id: number = 0;
+  edadPromedio: number | null = null;
 
-  constructor(
-    private uS: UsuarioService,
-    private eS: EspecialistaService,
-  ) {}
+  chartLabels: string[] = ['Edad Promedio'];
+  chartData: number[] = [];
+
+  constructor(private uS: UsuarioService, private eS: EspecialistaService) {}
 
   ngOnInit(): void {
-    this.cargarEspecialistas();
-  }
-
-  cargarEspecialistas(): void {
-    this.eS.getList().subscribe({
-      next: (data) => (this.listaEspecialistas = data),
-      error: (err) => console.error('Error al cargar especialistas', err)
+    this.eS.list().subscribe((data) => {
+      this.listaEspecialistas = data;
     });
   }
-
   obtenerEdadPromedio(): void {
-    if (this.idEspecialista != null) {
-      this.uS.edadpromedioporEspecialista(this.idEspecialista).subscribe({
-        next: (edad) => (this.edadPromedio = edad),
-        error: (err) => console.error('Error al obtener edad promedio', err)
+    this.uS
+      .edadpromedioporEspecialista(this.id)
+      .subscribe((resp) => {
+        this.edadPromedio = resp;
+        this.chartData = [resp];
       });
-    }
   }
 }

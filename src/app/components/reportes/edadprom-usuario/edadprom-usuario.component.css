@@ -1,17 +1,29 @@
-.container {
+.contenedorEdadPromedio {
   max-width: 600px;
-  margin: 2rem auto;
-  padding: 1rem;
+  margin: 3rem auto;
   text-align: center;
+  padding: 1rem;
 }
 
-.selector {
+.titulo {
+  margin-bottom: 1rem;
+}
+
+.campo-select {
   width: 100%;
   margin-bottom: 1rem;
 }
 
-.resultado {
-  margin-top: 1.5rem;
-  font-size: 20px;
-  color: #2e7d32;
+button {
+  margin-bottom: 2rem;
+}
+
+.resultadoEdad {
+  margin-top: 2rem;
+}
+
+mat-card {
+  background-color: #e3f2fd;
+  padding: 1rem;
+  margin-bottom: 2rem;
 }
