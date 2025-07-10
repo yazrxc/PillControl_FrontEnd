@@ -34,4 +34,8 @@ export class TratamientoService {
   deleteA(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  tratamientosPorUsuario(id: number) {
+    return this.http.get<Tratamiento[]>(`${this.url}/tratamientosusuario/${id}`);
+  }
 }
